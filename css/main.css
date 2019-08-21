@@ -1018,7 +1018,7 @@ pre .javascript .function {
   }
 }
 .header {
-  background: transparent;
+  background: url("/images/beng3.png");
 }
 .header-inner {
   position: relative;
@@ -1529,7 +1529,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff0bb1;
+  background: #38b49d;
 }
 .feed-link,
 .chat {
