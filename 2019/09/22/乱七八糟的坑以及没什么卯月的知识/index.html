@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="包含r-cnn系列，ssd，yolo系列。r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。">
+  <meta name="description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深度学习图像detector相关论文整理">
-<meta property="og:url" content="https://accioy.github.io/2019/09/15/detector-papers/index.html">
+<meta property="og:title" content="乱七八糟的坑以及没什么卯月的知识">
+<meta property="og:url" content="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/index.html">
 <meta property="og:site_name" content="Accio_">
-<meta property="og:description" content="包含r-cnn系列，ssd，yolo系列。r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。">
+<meta property="og:description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-14T18:03:57.205Z">
+<meta property="og:updated_time" content="2019-09-22T12:02:04.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深度学习图像detector相关论文整理">
-<meta name="twitter:description" content="包含r-cnn系列，ssd，yolo系列。r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。">
-  <link rel="canonical" href="https://accioy.github.io/2019/09/15/detector-papers/">
+<meta name="twitter:title" content="乱七八糟的坑以及没什么卯月的知识">
+<meta name="twitter:description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
+  <link rel="canonical" href="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>深度学习图像detector相关论文整理 | Accio_</title>
+  <title>乱七八糟的坑以及没什么卯月的知识 | Accio_</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://accioy.github.io/2019/09/15/detector-papers/">
+    <link itemprop="mainEntityOfPage" href="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -242,7 +242,7 @@
       <meta itemprop="name" content="Accio_">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">深度学习图像detector相关论文整理
+        <h1 class="post-title" itemprop="name headline">乱七八糟的坑以及没什么卯月的知识
 
           
         </h1>
@@ -258,7 +258,7 @@
                 
               
 
-              <time title="创建时间：2019-09-15 01:58:41 / 修改时间：02:03:57" itemprop="dateCreated datePublished" datetime="2019-09-15T01:58:41+08:00">2019-09-15</time>
+              <time title="创建时间：2019-09-22 20:01:22 / 修改时间：20:02:04" itemprop="dateCreated datePublished" datetime="2019-09-22T20:01:22+08:00">2019-09-22</time>
             </span>
           
             
@@ -280,7 +280,7 @@
           
 
           
-            <span id="/2019/09/15/detector-papers/" class="post-meta-item leancloud_visitors" data-flag-title="深度学习图像detector相关论文整理" title="阅读次数">
+            <span id="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/" class="post-meta-item leancloud_visitors" data-flag-title="乱七八糟的坑以及没什么卯月的知识" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -298,7 +298,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/09/15/detector-papers/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/15/detector-papers/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -312,12 +312,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>包含r-cnn系列，ssd，yolo系列。</p><p>r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。</p><a id="more"></a>
-
-<p>yolo系列，包含yolov1，yolov2，yolov3。</p>
-<h1 id="yolo-v1"><a href="#yolo-v1" class="headerlink" title="yolo v1"></a>yolo v1</h1><p>端到端</p>
-<p>图片首先被分割为S*S的网格。如果一个bbox的中心落在一个网格里，则该网格负责检测该物体。</p>
-<p>待填坑。</p>
+        <h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
+<p><del>依赖：查了nv-docker的github issue，感觉貌似是容器包含cuda，依赖主机的显卡驱动。</del></p>
+<p>没错就是这样，<a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements</a></p>
+<p>根据这个wiki说明，cuda的镜像启动需要依赖显卡驱动，并且根据镜像内的cuda版本对显卡驱动版本有要求，具体版本对应要求见上述链接。</p>
+<p>因此容器的cuda对主机的显卡驱动有要求，如果不兼容，要么改主机的显卡驱动版本（没有root不能，而且也没查到非root装显卡驱动的方法，要么就尝试更换与当前主机显卡驱动版本兼容的cuda镜像。</p>
+<p><del>但目前我用dnndk这种冷门的东西，我又不想自己建一个镜像把xilinx的那些东西自己装一遍，因此尝试更改镜像内cuda版本看看。</del></p>
+<p>上述尝试失败，和狗管理沟通准备升级显卡驱动，考虑到cuda可以同时装多个版本，并且新版显卡驱动对旧版cuda兼容（如果nv的那个对照表没写错的话），但愿以前的环境不要出现兼容问题。</p>
+<h1 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h1><h2 id="关于root密码"><a href="#关于root密码" class="headerlink" title="关于root密码"></a>关于root密码</h2><p>是随机的，输入passwd更改，对于ssh，root默认不能远程登录，需要修改配置文件（见ssh章节</p>
+<h2 id="关于包"><a href="#关于包" class="headerlink" title="关于包"></a>关于包</h2><p>首先apt-get update更新源，之后才能安装新东西</p>
+<p>然后apt-get upgrade更新所有包</p>
+<p><strong>包相关命令：</strong></p>
+<p>清除无用包：<strong>apt-get clean &amp;&amp; apt-get autoclean</strong> 　　#一般用<strong>apt-get autoclean</strong>就够了</p>
+<p>更新源：<strong>apt-get update</strong>　　　　#同步 /etc/apt/sources.list 源的索引，这样才知道是不是有最新的包</p>
+<p>更新包：<strong>apt-get upgrade</strong>　　　#更新所有已安装的软件（upgrade只是简单的更新包，不管这些依赖，它不添不删。）</p>
+<p>更新包2：apt-get dist-upgrade　#包与包之间存在各种依赖关系。而dist-upgrade可以根据依赖关系的变化添删包。（<strong>依赖有时会出错，建议新手谨慎使用</strong>）</p>
+<p>补充：在执行 <strong>upgrade</strong> or <strong>dist-upgrade</strong> 之前一定要执行 <strong>update</strong>, 这样才能获取最新</p>
+<p>安装软件：apt-get install XXX [–reinstall]　#<strong>–reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
+<p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖（安装搜狗拼音实例有用到）</p>
+<p>删除软件：apt-get remove XXX [–purge]　#–purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX –purge</strong></p>
+<p>-——————————————————————————————————————————————————–</p>
+<p>其他命令：(特殊环境下使用)</p>
+<p>搜索软件：apt-get search xxx</p>
+<p>检查是否有损坏的依赖：apt-get check　　　（偶尔想起来或者软件打不开的时候使用【有时候被清理了】）</p>
+<p>获取包信息：apt-cache show xxx</p>
+<p>有哪些依赖：apt-cache depends xxx　　　 （比如安装一个包，修复依赖也失败，那就看看有哪些依赖，自己手动安装）</p>
+<p>被哪些包依赖：apt-cache rdepends xxx　　（比如卸载一个包的时候，查一下被哪些包依赖）</p>
+<p>下载该包源代码：apt-get source xxx</p>
+<p>安装相关编译环境：apt-get build-dep xxx</p>
+<h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><p>df -h查看硬盘情况</p>
+<p>du 目录查看目录大小，-m以MB为单位</p>
+<p>nvidia-smi 查看gpu使用情况</p>
+<p>tar -zxvf java.tar.gz  -C /usr/java 解压到目标路径</p>
+<p>jobs查看后台列表，但只能查看当前终端的</p>
+<p>bg，fg前后切换</p>
+<p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里</p>
+<p>命令后加 &amp;后台运行</p>
+<p>正在运行时ctrl+z切后台</p>
+<p>ps -ef可查看全部后台，|grep ***可以查找</p>
+<p>ctrl+s暂停终端变化，ctrl+q继续（好像是吧</p>
+<p>ls -lR|grep “^-“|wc -l<br>查看某文件夹下文件夹的个数，包括子文件夹里的。</p>
+<p>复制文件夹：cp xxx /www/wwwroot -r</p>
+<p>rsync同步文件，一般-avP即可</p>
+<h1 id="ssh服务端"><a href="#ssh服务端" class="headerlink" title="ssh服务端"></a>ssh服务端</h1><p>apt-get install openssh-server</p>
+<p>启动：/etc/init.d/ssh start</p>
+<p>ps -e|grep ssh</p>
+<p>默认root不能远程登录，需要修改配置文件</p>
+<p>vim /etc/ssh/sshd_config</p>
+<p>vim搜索：/***</p>
+<p>修改PermitRootLogin项，默认为without-password，修改为yes</p>
+<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>i插入，esc命令模式，:到尾部输入命令，w保存，q退出，!强制</p>
+<p>保存退出 ：:wq!</p>
+<p>不保存退出：:q!</p>
+<h1 id="mathtype公式显示不全"><a href="#mathtype公式显示不全" class="headerlink" title="mathtype公式显示不全"></a>mathtype公式显示不全</h1><p>调整word行距，不要设固定值，最好改成xx倍</p>
+<h1 id="有关random-shuffle函数的局限性"><a href="#有关random-shuffle函数的局限性" class="headerlink" title="有关random.shuffle函数的局限性"></a>有关random.shuffle函数的局限性</h1><p>刚刚踩的坑，记录一下，万一对别人有帮助呢。</p>
+<p>本文重点： random.shuffle千万不要用于二维numpy.array（也就是矩阵）!!!</p>
+<p><a href="https://blog.csdn.net/qq_21063873/article/details/80860218" target="_blank" rel="noopener">https://blog.csdn.net/qq_21063873/article/details/80860218</a></p>
+<h1 id="关于卡刷img"><a href="#关于卡刷img" class="headerlink" title="关于卡刷img"></a>关于卡刷img</h1><p>用balenaEtcher往SD卡里刷img的时候，空间越刷越小，格式化不能恢复，我qtmd，百度了一下解决方法：</p>
+<p><a href="https://blog.csdn.net/tz2101/article/details/55000309" target="_blank" rel="noopener">https://blog.csdn.net/tz2101/article/details/55000309</a></p>
+<p>有时候U盘做完系统盘安装后，发现U盘大小大幅度缩水，怎么恢复原大小。<br>步骤如下：<br>插入U盘；</p>
+<p>打开“运行”，输入cmd命令，然后输入diskpart，进入diskpart管理；<br>输入list disk，查看目前电脑的硬盘，然后输入select disk 3（原作者说一般是1反正我这里是3）（注意空格，名字是英文，list里显示的是中文还行）；<br>此时已选中U盘了，输入clean，清除U盘上的数据；<br>输入create partition primary ，即创建主分区，active 激活该分区，format quick搜索 快速格式化该分区。</p>
+<p>exit退出diskpart管理，exit退出cmd。此时你发现你的U盘恢复了原始大小。</p>
+<h2 id="linux命令行搭建shadowsocks代理"><a href="#linux命令行搭建shadowsocks代理" class="headerlink" title="linux命令行搭建shadowsocks代理"></a>linux命令行搭建shadowsocks代理</h2><p>问题在于弄好socks代理还要搞个https转socks，如果有gui的话弄好shadowsocks浏览器有插件可以解决。</p>
+<p>命令行情况下，<code>pip install shadowsocks</code>，然后sslocal命令。</p>
+<p>linux的shadowsocks服务端和客户端是一个包，服务端命令是ssserver。</p>
+<p>问题在于https转socks实现，需要第三方软件实现。</p>
+<h2 id="关于主机ping开发板等设备"><a href="#关于主机ping开发板等设备" class="headerlink" title="关于主机ping开发板等设备"></a>关于主机ping开发板等设备</h2><p>直连网线的话主机设静态ip并和开发板ip在同一区段内</p>
 
     </div>
 
@@ -334,8 +394,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/13/matplotlib-learn/" rel="next" title="matplotlib学习">
-                  <i class="fa fa-chevron-left"></i> matplotlib学习
+                <a href="/2019/09/16/国奖/" rel="next" title="国奖">
+                  <i class="fa fa-chevron-left"></i> 国奖
                 </a>
               
             </div>
@@ -343,10 +403,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/16/国奖/" rel="prev" title="国奖">
-                  国奖 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -398,7 +454,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yolo-v1"><span class="nav-number">1.</span> <span class="nav-text">yolo v1</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nv-docker"><span class="nav-number">1.</span> <span class="nav-text">nv docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟主机"><span class="nav-number">2.</span> <span class="nav-text">虚拟主机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于root密码"><span class="nav-number">2.1.</span> <span class="nav-text">关于root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于包"><span class="nav-number">2.2.</span> <span class="nav-text">关于包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令"><span class="nav-number">3.</span> <span class="nav-text">linux命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh服务端"><span class="nav-number">4.</span> <span class="nav-text">ssh服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vim"><span class="nav-number">5.</span> <span class="nav-text">vim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathtype公式显示不全"><span class="nav-number">6.</span> <span class="nav-text">mathtype公式显示不全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有关random-shuffle函数的局限性"><span class="nav-number">7.</span> <span class="nav-text">有关random.shuffle函数的局限性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于卡刷img"><span class="nav-number">8.</span> <span class="nav-text">关于卡刷img</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux命令行搭建shadowsocks代理"><span class="nav-number">8.1.</span> <span class="nav-text">linux命令行搭建shadowsocks代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于主机ping开发板等设备"><span class="nav-number">8.2.</span> <span class="nav-text">关于主机ping开发板等设备</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
