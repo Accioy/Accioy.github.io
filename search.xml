@@ -220,6 +220,8 @@
 <p>计划：有时间把api也做成自己的</p>
 <h1 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h1><p>已添加，并建立了加密文章的模板</p>
 <h1 id="公式显示"><a href="#公式显示" class="headerlink" title="公式显示"></a>公式显示</h1><p>参考NEXT官网文档的math equation说明</p>
+<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><p>参考NEXT官网文档说明。</p>
+<p>有个问题是，如果在_data/styles.styl里面修改了.header-inner的样式，搜索框的z轴会出现问题，即使设了z轴9999仍然会被遮挡，审查界面发现搜索框是header-inner的子元素，查了一下说子元素z轴受到父元素制约，因此需要将.header-inner的z轴同样设高。</p>
 <h1 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h1><p>修改_data/styles.styl侧栏背景色</p>
 ]]></content>
       <categories>
