@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>需要的感觉</title>
+    <url>/2019/10/31/let-it-go/</url>
+    <content><![CDATA[<p>Let it go，说的简单，你能做到吗</p><p>我在想是不是我对自己的要求太高了。客观来说，本来就是个垃圾玩意，你再怎么努力也很难脱离这个垃圾范畴。</p><a id="more"></a>
+
+<p>前天，啊已经是前天的事了么。好害怕记忆淡却，好害怕重要的记忆淡却。选择不吃那个安眠药可能是对的。</p>
+<p>杨导人真的很好，作为同为你系又选了同系导师的博士学姐，告诉了我很多她了解的情况以及她的经验，很感谢她。</p>
+<p><strong>在国外，两个人错把互相需要的感觉当作爱情。</strong></p>
+<p>我还在纠结读博的问题，所以这天来和她，我们这一级的导员谈了谈。</p>
+<p>刚好这天班委开会，我就顺便混入<del>装作</del>班委，反正也就几个人大家几年来也都认识。</p>
+<p>这次班委会我才知道，原来需要帮助的人就在我们身边，也许你身旁的人就在崩溃的边缘<del>比如我自己</del>。</p>
+<p><del><strong>如果没有绝对的信念，就不要。</strong></del></p>
+<p>班委会的时间比预计的长，我和杨导谈的时间也比预计长了很多。会前杨导在班委群里说晚来十几分钟。我和大班长最先到，我就和他顺便聊了聊，他也在考虑读博的事。会后就和我一起留下来听杨导谈了。还好不然我一个人又要有压力了。</p>
+<p><em><del>与人交往的每一秒都使我感到痛苦。</del></em></p>
+<p>那句话是谈到国外读博的时候她随口提到的。后来觉得这句话有丶意思，和沙雕群友提起。ppp说，爱情难道不就是互相需要吗。才发现，真是一语惊醒梦中人。</p>
+<p>我所追求的东西……</p>
+<p>不普通？不可替代？超越一般人？Do great things?或者是某种注定的 Destiny ？</p>
+<p><del>（第三条出自HP1，今天不知为什么突发奇想重温了一下HP7里奥利凡德给Harry他们鉴定抢来的魔杖以及HP1奥利凡德卖给Harry凤凰芯魔杖）</del></p>
+<p><del>（第四条出自正在听的BGM，鲁鲁修里的c.c.角色歌 Masquerade ）</del></p>
+<p><del>（也真是巧，这两个桥段都有命运的感觉）</del></p>
+<p>都不是，或者说，都不准确。一直以来我也说不清我自己在追寻什么。直到此刻被点醒。</p>
+<p>是啊，我连被需求的感觉都不知道，又怎么会知道什么是爱情呢。</p>
+<blockquote>
+<p>進む君と止まった僕の</p>
+<p>縮まらない隙を何で埋めよう</p>
+<p>まだ素直に言葉に出来ない僕は</p>
+<p>天性の弱虫さ</p>
+</blockquote>
+<p>这个歌词里，把你我换下位置，怕是正适合我哦。</p>
+<p>不断前进的我和停下的你。我抛弃了太多东西在后面，包括作为一个正常人的感觉。你又在哪里呢。什么都无法直率地说出来的我，是天性的胆小鬼。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>加密测试</title>
+    <url>/2019/10/24/%E5%8A%A0%E5%AF%86%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="也许有一天我会给你钥匙，也许那一天永远不会到来" data-whm="ERROR">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="我若敞开心扉，你是否有接受的勇气？" />
+    <label for="hbePass">我若敞开心扉，你是否有接受的勇气？</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="d6ea1a77151bec94ce9689e14aa25f4d81d055f5d3103158d88e1b67637a9775">bdce5015998c4ed71a66a223a6e1ccaaf2f285ce43984065104d9c74179b2bc1192772268b27c25c0bcd96b24fa9d01ce449ba4d2806220db1364822db16079b</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+  </entry>
+  <entry>
+    <title>hexo一键自动部署</title>
+    <url>/2019/10/22/hexo%E4%B8%80%E9%94%AE%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<h1 id="一键"><a href="#一键" class="headerlink" title="一键"></a>一键</h1><p>主要方法是写成命令行脚本然后直接运行，但不知为啥，我写成bat文件运行没有效果。首先目前win10（以前不知道）运行shell脚本时自动进入脚本所在路径的，因此理论上不用写cd，但不知道为什么bat就是不行。</p><a id="more"></a>
+<p>不过我平时部署都是powershell做的，主要是比cmd好看一些，虽然我还有更强大的mobaxterm就是了。查了一下powershell的脚本格式是.ps1（也不知道为什么叫这个）。</p>
+<p>以下是脚本：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Start-Transcript</span> <span class="string">"path-to-log\log.txt"</span> -force</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="built_in">Stop-Transcript</span></span><br></pre></td></tr></table></figure>
+<p>Start-Transcript和<code>Stop-Transcript</code>会记录中间的命令行输出，并保存到log文件中，缺点是不记录命令本身。未找到更好的解决方案。</p>
+<p>本来想基于命令行变量每次部署建新的日志文件根据时间命名文件，但不知为什么不行。于是就这样了。</p>
+<h1 id="自动"><a href="#自动" class="headerlink" title="自动"></a>自动</h1><p>目前的想法是windows计划任务，定时定期执行脚本，目前还没试。</p>
+<p>其实发现还有个更好的方法是使用 <a href="https://travis-ci.com/" target="_blank" rel="noopener">Travis CI</a> 托管实现自动生成部署，改天有时间研究一下。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>words of la vie</title>
+    <url>/2019/10/22/words-of-la-vie/</url>
+    <content><![CDATA[<h1 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h1><p><strong>人，的见识，就像一个集合，集合越大，边界就越大，就越感觉自己无知，</strong></p><p>↑ 来自高中的数学老师</p><p>↓ 是我自己的补充</p><a id="more"></a>
+
+
+<p>就越可能感觉痛苦。什么都不懂的无知者，往往比事先看透一切的人更加幸福。</p>
+<p>那么下辈子，你是否愿意做一个只知道吃和睡的猪？</p>
+<h1 id="其二"><a href="#其二" class="headerlink" title="其二"></a>其二</h1><p><strong>成长的过程是痛苦的。</strong></p>
+<p>↑  来自本科毕设指导老师oyp老师</p>
+<p>↓ 来着看过的某篇博文</p>
+<p><strong>Knowledge和skill是一个螺旋上升的感觉。有时感觉技能到位了，但知识水平不到位，有时则相反。</strong></p>
+<p>↓ 我的补充</p>
+<p>不过很多时候是二者都不到位，所以很痛苦。</p>
+<h1 id="其三"><a href="#其三" class="headerlink" title="其三"></a>其三</h1><p>趁着还在这里，抓紧时间把该做的事情做完，不要等毕业之后才后悔。</p>
+<p>↑ 来自现在带我的老师</p>
+<p>↓ 我的补充</p>
+<p>很有道理，所以能不能别给我安排杂活了？</p>
+<p><del>↓ 另一次他说</del></p>
+<p><del>杂活始终是有的。</del></p>
+<p><del>。。。</del></p>
+<p><del>行吧。</del></p>
+<h1 id="其四"><a href="#其四" class="headerlink" title="其四"></a>其四</h1><p>摸了，下次再说</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>无题</title>
+    <url>/2019/10/22/20191922/</url>
+    <content><![CDATA[<p>又是在二院打（hua）工（shui）的一天。</p><p>突然通知就来了，没想到的通知。Un mail pour ceux qui veulent faire une thèse…</p><a id="more"></a>
+
+<p>命运总是不给我准备的时间，不给我充分思考的时间，不给我喘息的余地，我一直在被那只看不见的手强行推着向前，沿着一条不知通向哪里的路。</p>
+<p>所以很羡慕哔，早早地安排好了自己的命运。不过说到底还是自己太菜，没进入哔的学院。</p>
+<p>我发现一个问题，自从我拿了国奖之后，再说和别人说我自己菜，都没人信了。我感觉很害怕。</p>
+<p>不说了，该开始安排开题报告和文献综述了。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>She</title>
+    <url>/2019/10/22/she/</url>
+    <content><![CDATA[<p>Is she a taker, or a giver?</p><p>What are you, then? A giver, or a taker?</p><a id="more"></a>
+
+<p>…</p>
+<p>Perhaps everyone is a … faker. </p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+      <tags>
+        <tag>she</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>blog时间到</title>
+    <url>/2019/10/18/blog%E6%97%B6%E9%97%B4%E5%88%B0/</url>
+    <content><![CDATA[<p>我也不知道要说什么，但总之感觉想写blog</p><p>顺便说一句，双屏真好，有钱真好。我为什么没早点整一个呢，反正一块屏幕也不贵，体验是真的爽，再加一个罗技的无线键盘，虽然也没追求什么机械的，但不亏是专业的手感真爽（<del>比自带电脑的键盘爽多了</del>）。现在可以在宿舍一个屏幕看视频/直播/动画/音乐/你群，另一个屏幕搞coding/写文档/写blog/干正事（？）。不过虽然买这个屏幕的最初主要目的是ns主机模式，电脑外接显示屏只是次要的。以后工作了一定要让单位给我在办公室整个高素质大屏（怕是想屁吃）。</p><a id="more"></a>
+
+<p>昨天晚上微信加了她，不出意外地聊失败了。。。efunweiufnwEINVAIUGFnfawoenfaefnbaij</p>
+<p>也怪我，犹犹豫豫的性格还是改不了，做事情过于深思熟虑错过机会造成误解什么的教训也已经不是一次两次了，虽然感觉这几年已经改了不少了但关键时候还是犯错啊。总喜欢把事情完全掌握在手里把一切可能性都预料到，但等算出来的时候已经错过机会了。</p>
+<p>又有时候，因为自己思考的太过超前把别人远远甩开了，然后看着其他人一步步思考尝试自己早已预料到的死路（不是思路没打错）。有时因为这样觉得团队拖后腿干脆单干什么的。有时不理解为什么那么明显的事还要自己刻意讲明白之类的。</p>
+<p>所以总之我觉得今晚不适合听夜或者梦的歌单了，我现在在放昼的，但这几个歌单也好久没维护了，应该把新的……等等，这么说起来我忘记给学弟发文献让他看了，shit，今天吃饭的时候说好给他发一些文献的，额……</p>
+<p>桥豆麻袋我去给他发了先，现在是晚上11点半</p>
+<p>然后安顿他一定要理清思路做好笔记看不懂就去找网上别人写的分析文章等等（<del>我真是一个认真负责的学长啊</del></p>
+<p>不过这也要怪……算了还是不说了</p>
+<p>说起来老师今天问我要不要去xx学校（他在那边上课，女生多），大概叫我去做一些助教工作。我忘记我之前是否有在blog里写过这个事了（大概没有吧。事情是这样的：</p>
+<blockquote>
+<p>秦川之前有一段非常有意思的直播，那个录像我反复看了几次太好笑了，内容大概：</p>
+<blockquote>
+<p>雪山狼人杀，秦川是好人，捡到了一个狼人对讲机，对着对讲机频道喊，喂喂喂，有人在这个频道吗，有人在这个频道吗。耳鸣星：我啊。</p>
+</blockquote>
+<p>有一天，大家一起写一个项目申请书，老师突然问：你们谁还没有女朋友啊。我：我啊。</p>
+<p>其他人一片谜之沉默。</p>
+</blockquote>
+<p>点点点。。。</p>
+<p>总之大概就是这样，但他去那边上课的时间刚好和我自己这学期仅有的两门课中的一门时间冲突，今天他又提到这个事情，我说我那个时间有课啊，他说：逃了。</p>
+<p>点点点，怎么还有教唆学生逃课的老师的，举报了（x。</p>
+<p>咳咳，总之我会尽力让学弟少走一些弯路，希望他能比我更快的成长起来。。但我当初毕竟是对DL还是有一些基本概念的基础的，他起点可能比我低一点（可能也未必吧。</p>
+<p>另外真是什么东西都敢拿出来卖钱啊，容天那个服务器管理软件做的什么激霸玩意，感觉完全就是一不成熟的东西拿出来卖。搞的我现在也对GUI界面深恶痛绝了，给我个终端命令行多好。</p>
+<p>后悔之前没有写个<em><u>北航学院路小区夜间游荡指北</u></em>了，我其实想写个这玩意来着，但一直没有……好吧就是我懒，少玩点风花雪月大概就写出来了。写出来明天说不定就可以给她看了（<del>虽然她未必感兴趣就是了</del></p>
+<p>唉我一直觉得我的……情感爱好？……和正常人不一样，我再怎么表演也难以届到真实的感情，当我试图表达“这难道不moving吗，我已经究极deeply moved了”的时候，别人只会感到：这人有病吧。（也许？</p>
+<p>太过感性</p>
+<p>这是我认为我与一般理工科男生不同的地方。</p>
+<p>我觉得现在很多人缺乏敬畏之心，不过说实话，很多人连尊重都不懂更别说敬畏了。还好我没那样的朋友（因为本来就不会和那样的人做朋友。不过话说回来，你有朋友吗</p>
+<p>安凉给我推荐了一个学长的微信，在法国的，不过这事等有后续再说吧</p>
+<p>天气这周转凉了，真不是时候啊，这周还下了几天雨。</p>
+<p>雨啊……你知道我又想起那个Bgm了。雨中的真实（？</p>
+<p>其实我一直没加她的原因有很多，这些天正好赶上项目结题，又赶上另一个合作起步，还要在Boss的安排下去八院打工。</p>
+<p>草说起去八院这个事我又想吐槽了，那天我和wwf一早去了被鸽了一上午，下午才开始干活。我们几个是错位轮换着去的，每周周二，也就是第一周12去，第二周23去，第三周34去。他上次去过了，我问他需要带啥，他说：带着灵魂。</p>
+<p>（草这个markdown不能emoji，就算能放到网站上去也不支持，不知博客园那边是否支持，也不知能不能通过代码实现）</p>
+<p>嘛，迫真灵魂。总之我大概用了十几分钟看了那个matlab分析代码，然后下午提取了所有xx的ROC曲线，补充写了AUC计算的代码并算出了所有ROC曲线的AUC并标注到了图片里。</p>
+<p>这工作真扯淡我要死了，总之下次让下一个选手看代码写报告，我宣布挂机。（又不给钱，还tm得我自己倒贴地铁钱草</p>
+<p>总而言之明天要见她，虽然微信没聊得来但……希望见面能聊得来吧。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+      <tags>
+        <tag>she</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>给我一首歌的时间</title>
+    <url>/2019/10/16/%E7%BB%99%E6%88%91%E4%B8%80%E9%A6%96%E6%AD%8C%E7%9A%84%E6%97%B6%E9%97%B4/</url>
+    <content><![CDATA[<p>夜深了，该睡了</p><p>就用一首歌的时间写这篇吧</p><p>上周还是上上周？已经记不清了，时间的概念已经模糊，总是是国庆最后一天，和你群群友聚餐，然后K歌，纯K。</p><a id="more"></a>
+
+
+<p>我唱了什么来着</p>
+<p>总之是唱了点究极经典老歌吧（比如女人花，不是我点的，我没点过歌，都是别人点的，遇到会唱的就跟着混两句。</p>
+<p>顺便说一下开场第一首，届不到的爱，迫真开幕雷击。</p>
+<p>我</p>
+<p>突然不知道该说什么了，总是这样，要写的时候突然又没什么心情了</p>
+<p>说说现在在听的歌吧，也是那次K歌的时候想起的，想起我高中在英语课上唱过，今天偶然想找回来听一听，竟然发现网易云没这首歌的版权。查到歌手后，发现那首歌虽然没版权，但在本地竟然是存在的。打开那个文件夹，我落泪了。2011年……修改日期。这都9012年了，当时我还没有自己的电脑，到现在我自己的电子设备都换了多少代了……这些老物竟然还在，激动的我去网易云创了个怀旧歌单。</p>
+<p>发现真正到了这个人生阶段才开始懂想家的感觉。</p>
+<p>想在K上唱来着，又想这么多年没听了也唱不好，又很忧伤的歌，算了。</p>
+<p>想起了点想说的东西，有人问我当时为什么没唱浮夸。确实突然发现这首歌的歌词挺适合我的，我的表演，你看吗。希望你不要忘记我，但你又在哪里呢。我回答说，不会粤语，不唱的。</p>
+<p>I am loving living every single day but sometimes I feel so.</p>
+<p>想在一首歌内写完果然是不太可能的，单曲循环了三四次吧。</p>
+<p>我现在还喜欢我的every single day吗，当初也许是，现在可能要打上一个大大的问号了。sometimes I feel so倒是真的。</p>
+<p>睡了，今天在航天二院搞了一整天，晚上还上课，明天还要去实验室上班。</p>
+<p>歌名叫far away from home，歌手Groove Coverage。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>blog网站更新记录</title>
+    <url>/2019/09/26/blog-update-log/</url>
+    <content><![CDATA[<h1 id="基本框架"><a href="#基本框架" class="headerlink" title="基本框架"></a>基本框架</h1><p>hexo+Next主题</p><p>添加背景图片：自定义_data/styles.styl</p><p>enable主题功能：</p><a id="more"></a>
+
+
+<ul>
+<li><del>点线动画（canvas_nest）</del></li>
+<li>访问统计（leancloud_visitors）</li>
+<li>valine评论（数据存储基于leancloud国际版）</li>
+<li>pjax（需要在主题内安装对应依赖项），现在切换界面不需要重新加载，也就是bgm不会断~</li>
+</ul>
+<h1 id="评论留言"><a href="#评论留言" class="headerlink" title="评论留言"></a>评论留言</h1><p>评论基于valine，留言基于一个独立page附带评论功能</p>
+<p>关闭邮件提醒以及验证码</p>
+<h1 id="网易云音乐"><a href="#网易云音乐" class="headerlink" title="网易云音乐"></a>网易云音乐</h1><p>layout/_macro/sideabr.swig</p>
+<h1 id="特效"><a href="#特效" class="headerlink" title="特效"></a>特效</h1><h2 id="樱花"><a href="#樱花" class="headerlink" title="樱花"></a>樱花</h2><p>主题配置添加sakura，添加source/js/sakura.js文件，修改css属性z轴设为-1，使其不遮挡post等，layout/_layout.swig添加代码</p>
+<h2 id="点击"><a href="#点击" class="headerlink" title="点击"></a>点击</h2><p>主题配置添加clicklove，添加source/js/clicklove.js文件，layout/_layout.swig添加代码</p>
+<h1 id="说说界面"><a href="#说说界面" class="headerlink" title="说说界面"></a>说说界面</h1><p>找了一下网上的解决方案，感觉都比较麻烦</p>
+<p>自己想了一些解决方案</p>
+<p>最后采用直接markdown格式写在page的index.md里面，感觉还行，当然分条点赞评论之类的就不指望了（本来也很难实现</p>
+<h1 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h1><p><del>目前基于：<a href="https://github.com/xiazeyu/live2d-widget-models" target="_blank" rel="noopener">https://github.com/xiazeyu/live2d-widget-models</a></del></p>
+<p><a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noopener">https://github.com/stevenjoezhang/live2d-widget</a></p>
+<p>fork为我自己的repo简要修改，并使用我自己的cdn地址</p>
+<p>计划：有时间把api也做成自己的</p>
+<h1 id="文章加密"><a href="#文章加密" class="headerlink" title="文章加密"></a>文章加密</h1><p>已添加，并建立了加密文章的模板</p>
+<h1 id="公式显示"><a href="#公式显示" class="headerlink" title="公式显示"></a>公式显示</h1><p>参考NEXT官网文档的math equation说明</p>
+<h1 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h1><p>修改_data/styles.styl侧栏背景色</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>乱七八糟的坑以及没什么卯月的知识</title>
+    <url>/2019/09/22/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E5%9D%91%E4%BB%A5%E5%8F%8A%E6%B2%A1%E4%BB%80%E4%B9%88%E5%8D%AF%E6%9C%88%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
+<p><del>依赖：查了nv-docker的github issue，感觉貌似是容器包含cuda，依赖主机的显卡驱动。</del></p>
+<p>没错就是这样，<a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements</a></p>
+<p>根据这个wiki说明，cuda的镜像启动需要依赖显卡驱动，并且根据镜像内的cuda版本对显卡驱动版本有要求，具体版本对应要求见上述链接。</p>
+<p>因此容器的cuda对主机的显卡驱动有要求，如果不兼容，要么改主机的显卡驱动版本（没有root不能，而且也没查到非root装显卡驱动的方法，要么就尝试更换与当前主机显卡驱动版本兼容的cuda镜像。</p>
+<p><del>但目前我用dnndk这种冷门的东西，我又不想自己建一个镜像把xilinx的那些东西自己装一遍，因此尝试更改镜像内cuda版本看看。</del></p>
+<p>上述尝试失败，和狗管理沟通准备升级显卡驱动，考虑到cuda可以同时装多个版本，并且新版显卡驱动对旧版cuda兼容（如果nv的那个对照表没写错的话），但愿以前的环境不要出现兼容问题。</p>
+<h1 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h1><h2 id="关于root密码"><a href="#关于root密码" class="headerlink" title="关于root密码"></a>关于root密码</h2><p>是随机的，输入passwd更改，对于ssh，root默认不能远程登录，需要修改配置文件（见ssh章节</p>
+<h2 id="关于包"><a href="#关于包" class="headerlink" title="关于包"></a>关于包</h2><p>首先apt-get update更新源，之后才能安装新东西</p>
+<p>然后apt-get upgrade更新所有包</p>
+<p><strong>包相关命令：</strong></p>
+<p>清除无用包：<strong>apt-get clean &amp;&amp; apt-get autoclean</strong> 　　#一般用<strong>apt-get autoclean</strong>就够了</p>
+<p>更新源：<strong>apt-get update</strong>　　　　#同步 /etc/apt/sources.list 源的索引，这样才知道是不是有最新的包</p>
+<p>更新包：<strong>apt-get upgrade</strong>　　　#更新所有已安装的软件（upgrade只是简单的更新包，不管这些依赖，它不添不删。）</p>
+<p>更新包2：apt-get dist-upgrade　#包与包之间存在各种依赖关系。而dist-upgrade可以根据依赖关系的变化添删包。（<strong>依赖有时会出错，建议新手谨慎使用</strong>）</p>
+<p>补充：在执行 <strong>upgrade</strong> or <strong>dist-upgrade</strong> 之前一定要执行 <strong>update</strong>, 这样才能获取最新</p>
+<p>安装软件：apt-get install XXX [—reinstall]　#<strong>—reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
+<p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖（安装搜狗拼音实例有用到）</p>
+<p>删除软件：apt-get remove XXX [—purge]　#—purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX —purge</strong></p>
+<p>-————————————————————————————————————————————————————————————————————————————</p>
+<p>其他命令：(特殊环境下使用)</p>
+<p>搜索软件：apt-get search xxx</p>
+<p>检查是否有损坏的依赖：apt-get check　　　（偶尔想起来或者软件打不开的时候使用【有时候被清理了】）</p>
+<p>获取包信息：apt-cache show xxx</p>
+<p>有哪些依赖：apt-cache depends xxx　　　 （比如安装一个包，修复依赖也失败，那就看看有哪些依赖，自己手动安装）</p>
+<p>被哪些包依赖：apt-cache rdepends xxx　　（比如卸载一个包的时候，查一下被哪些包依赖）</p>
+<p>下载该包源代码：apt-get source xxx</p>
+<p>安装相关编译环境：apt-get build-dep xxx</p>
+<h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><p>df -h查看硬盘情况</p>
+<p>du 目录查看目录大小，-m以MB为单位</p>
+<p>nvidia-smi 查看gpu使用情况</p>
+<p>tar -zxvf java.tar.gz  -C /usr/java 解压到目标路径</p>
+<p>jobs查看后台列表，但只能查看当前终端的</p>
+<p>bg，fg前后切换</p>
+<p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里</p>
+<p>命令后加 &amp;后台运行</p>
+<p>正在运行时ctrl+z切后台</p>
+<p>ps -ef可查看全部后台，|grep <em>*</em>可以查找</p>
+<p>ctrl+s暂停终端变化，ctrl+q继续（好像是吧</p>
+<p>ls -lR|grep “^-“|wc -l<br>查看某文件夹下文件夹的个数，包括子文件夹里的。</p>
+<p>复制文件夹：cp xxx /www/wwwroot -r</p>
+<p>rsync同步文件，一般-avP即可</p>
+<h1 id="ssh服务端"><a href="#ssh服务端" class="headerlink" title="ssh服务端"></a>ssh服务端</h1><p>apt-get install openssh-server</p>
+<p>启动：/etc/init.d/ssh start</p>
+<p>ps -e|grep ssh</p>
+<p>默认root不能远程登录，需要修改配置文件</p>
+<p>vim /etc/ssh/sshd_config</p>
+<p>vim搜索：/<em>*</em></p>
+<p>修改PermitRootLogin项，默认为without-password，修改为yes</p>
+<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>i插入，esc命令模式，:到尾部输入命令，w保存，q退出，!强制</p>
+<p>保存退出 ：:wq!</p>
+<p>不保存退出：:q!</p>
+<h1 id="mathtype公式显示不全"><a href="#mathtype公式显示不全" class="headerlink" title="mathtype公式显示不全"></a>mathtype公式显示不全</h1><p>调整word行距，不要设固定值，最好改成xx倍</p>
+<h1 id="有关random-shuffle函数的局限性"><a href="#有关random-shuffle函数的局限性" class="headerlink" title="有关random.shuffle函数的局限性"></a>有关random.shuffle函数的局限性</h1><p>刚刚踩的坑，记录一下，万一对别人有帮助呢。</p>
+<p>本文重点： random.shuffle千万不要用于二维numpy.array（也就是矩阵）!!!</p>
+<p><a href="https://blog.csdn.net/qq_21063873/article/details/80860218" target="_blank" rel="noopener">https://blog.csdn.net/qq_21063873/article/details/80860218</a></p>
+<h1 id="关于卡刷img"><a href="#关于卡刷img" class="headerlink" title="关于卡刷img"></a>关于卡刷img</h1><p>用balenaEtcher往SD卡里刷img的时候，空间越刷越小，格式化不能恢复，我qtmd，百度了一下解决方法：</p>
+<p><a href="https://blog.csdn.net/tz2101/article/details/55000309" target="_blank" rel="noopener">https://blog.csdn.net/tz2101/article/details/55000309</a></p>
+<p>有时候U盘做完系统盘安装后，发现U盘大小大幅度缩水，怎么恢复原大小。<br>步骤如下：<br>插入U盘；</p>
+<p>打开“运行”，输入cmd命令，然后输入diskpart，进入diskpart管理；<br>输入list disk，查看目前电脑的硬盘，然后输入select disk 3（原作者说一般是1反正我这里是3）（注意空格，名字是英文，list里显示的是中文还行）；<br>此时已选中U盘了，输入clean，清除U盘上的数据；<br>输入create partition primary ，即创建主分区，active 激活该分区，format quick搜索 快速格式化该分区。</p>
+<p>exit退出diskpart管理，exit退出cmd。此时你发现你的U盘恢复了原始大小。</p>
+<h2 id="linux命令行搭建shadowsocks代理"><a href="#linux命令行搭建shadowsocks代理" class="headerlink" title="linux命令行搭建shadowsocks代理"></a>linux命令行搭建shadowsocks代理</h2><p>问题在于弄好socks代理还要搞个https转socks，如果有gui的话弄好shadowsocks浏览器有插件可以解决。</p>
+<p>命令行情况下，<code>pip install shadowsocks</code>，然后sslocal命令。</p>
+<p>linux的shadowsocks服务端和客户端是一个包，服务端命令是ssserver。</p>
+<p>问题在于https转socks实现，需要第三方软件实现。</p>
+<h2 id="关于主机ping开发板等设备"><a href="#关于主机ping开发板等设备" class="headerlink" title="关于主机ping开发板等设备"></a>关于主机ping开发板等设备</h2><p>直连网线的话主机设静态ip并和开发板ip在同一区段内</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>国奖</title>
+    <url>/2019/09/16/%E5%9B%BD%E5%A5%96/</url>
+    <content><![CDATA[<p>今天国奖答辩，评审，学院5个名额，12个人参加答辩，都是从本科开始就是dalao的选手（除了我，平均成绩都能比我高20分吧（哭。</p><a id="more"></a>
+<p>一周前告白失败，我下定决心果酱一定要拼一次，准备了很多材料用来吹（除了成绩。</p>
+<p>答辩前大家在休息室等。</p>
+<p>还记得放假前来这个休息室交实习材料，夏天，很安静，因为已经放假了，整个楼静悄悄的。休息室里放了桌椅，沙发，明亮的配色，还有微波炉，打印扫描仪。</p>
+<p>几个人坐在里面，有说有笑交流了一会，每个人做的方向都不一样，有做nlp的，有做材料的，有做气动的，等等。有从国外回来的，有要出没出成的。不过，只有我一个憨憨做了将近20页ppt，在之前通知答辩只给5分钟的情况下。这一年我有太多东西想展示（其实仔细想想都是些小事，没有什么值得特别夸耀的）。室友说，我只做了5页ppt，有人说，巧了，我只做了6页，还有人说，我也不知道有什么好讲的。大家在屋里聊了一些有的没的，包括国内外一些见闻啦，发文章啦，等等。然后就是互相称呼dalao，又谦虚说自己是来炮灰之类的。直到答辩轮到我们级，顺序是按学号来的，因此先是研三的答辩。</p>
+<p>大家一个一个进去，又一个一个离开，最后一个人出来时，我说，等一下，把我的ppt删一下，他立刻反应过来，没问题，我补充说，毕竟上面有的东西还是比较敏感，他说，没问题，我理解，毕竟大家都是xx（学校名）的。</p>
+<p>大家走后，我在答辩的会议室外等了一会。</p>
+<p>答辩评委有院长，比较让我惊讶的是两个级的导员竟然都是评委，其他人忘了是谁，我一向对这些不关心。也就院长能问出来一些有水平的问题。</p>
+<p>等了会后，导员出来了，问结果，说，你先走吧，结果会通知的，你答辩挺好的。又问是今天内出吗，说今天内会出来。</p>
+<p>又在其他人都走了的会议室独自等了好一会。</p>
+<p>结束之后，帮忙导员收拾了一下会场。</p>
+<p>我答辩还没讲到一半的时候，被提醒只剩一分钟。出来之后问其他人，之前也有人被卡了时间。瞬间觉得自己真是太天真，明明预料到了这个风险，竟然愚蠢到没有问前面的人，竟然想着大家时间都这么短，我是不是可以讲多点。迅速讲到大半之后，被喊停，用一句话总结。我翻到最后一页，简要地用几句话讲了自己未来一年的规划，并且表达了想借这次评审希望我的努力得到认可的想法。</p>
+<p>导员告诉了我结果。后来又提醒我说你成绩比其他人有不小差距，需要努力。</p>
+<p>我发了pong友圈庆祝后，导员说我太高调了，毕竟结果还没公示。（掩面</p>
+<p>感觉自己还是太不成熟了啊</p>
+<p>很感谢这次导员对我的帮助。以及某位鼓动我申请这玩意的沙雕，让我证明了拿果酱比找女朋友容易。另外还有爽哥的名言。</p>
+<p><img src="/images/shuangge.png" alt></p>
+<p>想起昨晚听的音乐（第一次在博文中插音乐，不知效果怎么样</p>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1364351236&auto=0&height=66"></iframe><br>我在大学的人生最高光的时刻，估计也就是告白那天晚上了吧。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>深度学习图像detector相关论文整理</title>
+    <url>/2019/09/15/detector-papers/</url>
+    <content><![CDATA[<p>包含r-cnn系列，ssd，yolo系列。</p><p>r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。</p><a id="more"></a>
+
+<p>yolo系列，包含yolov1，yolov2，yolov3。</p>
+<h1 id="yolo系列"><a href="#yolo系列" class="headerlink" title="yolo系列"></a>yolo系列</h1><h2 id="yolov1"><a href="#yolov1" class="headerlink" title="yolov1"></a>yolov1</h2><h3 id="模型输出的概率建模"><a href="#模型输出的概率建模" class="headerlink" title="模型输出的概率建模"></a>模型输出的概率建模</h3><p>图片首先被分割为S*S的网格（grid cell）。如果一个bbox的中心落在一个网格里，则该网格负责检测该物体。（对于pascal数据集，S定为7）</p>
+<p>每个网格预测B个bbox及其confidence score，confidence定义为Pr(Object)∗IOU。 若该网格内没有物体，score应当是0；否则score被希望等于IOU（即如果网格不包含目标中心，则Pr(Object)=0，否则=1）。这个score反应了置信度，此处置信度是指模型预测的box是否真的包含目标（即第一项）以及模型自己认为box的准确度（即第二项）。</p>
+<p>每个bbox包含5个预测值，分别为x,y,w,h和score。(x,y)坐标是box中心相对于网格边界（？），(w,h)是相对于整幅图像。score代预测box与真实值的iou。（iou不是能通过xywh直接算出来吗？）</p>
+<p>每个cell同时还预测C个类别概率，即</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\operatorname{Pr}\left(\text { Class }_{i} | \text { Object }\right)
+\end{equation}</script><p>根据条件概率公式，有：</p>
+<script type="math/tex; mode=display">
+\operatorname{Pr}\left(\text { Class }_{i} \text { |Object }\right) * \operatorname{Pr}(\text { Object }) * \text { IOU }^{truth}_{pred}=\operatorname{Pr}\left(\text { Class }_{i}\right) * \text { IOU }^{truth}_{pred}</script><p>在原文中，对于PASCAL VOC数据集，有20类目标（C=20）,采用S=7，B=2，最终预测为</p>
+<script type="math/tex; mode=display">
+S \times S \times(B * 5+C)</script><p>即，7*7个网格，每个网格预测B个bbox，每个bbox有5个预测值，分别为xywh和score，以及20个类别概率值。</p>
+<h3 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h3><p>基于用于图片分类的googleNet，有一定的调整。两个网络模型，正常（yolo）的和tiny的(fast yolo)，正常的有24个卷积层+2个全连接层，tiny的有9个卷积层，滤波器也更少。使用了dropout在第一个全连接层之后（0.5）。</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>imagenet上预训练分类，训练前20个卷积层，后面连了平均池化和一个全连接层。预训练使用的是224*224的输入，正式训练扩大了2倍长宽。使用了几何数据扩充。</p>
+<p>输出xywh被归一化至0-1。激活函数使用leaky relu。</p>
+<p><strong>虽然每个网格预测两个bbox，但实际训练仅采用与真值IOU较高的那个bbox，即每个网格实际仅有一个参与训练的有效预测。</strong></p>
+<p>损失：使用sum-squared error。（和方差，其实和均方差没太大区别，只是没有除样本总数n）</p>
+<p>具体包含三部分：</p>
+<ol>
+<li>Score置信度：标签为Pr(Object)∗IOU，若有物体中心落入该网格内，则Pr=1，否则Pr=0.</li>
+<li>xywh：xywh都被归一化，仅在物体中心落入该网格时才在损失函数中出现。</li>
+<li>类别预测：对于一个网格，如果物体中心落入，则对应类别label为1，其余为0。同上，仅在物体中心落入该网格时才在损失函数中出现，即此项预测值为物体存在条件下的概率，Pr(class_i | Object)。</li>
+</ol>
+<p>解决问题：大量不含目标的网格，即正负样本严重不均衡的问题：加权，含目标的加权至5，不含的至0.5。</p>
+<p>解决问题：小box的小偏移误差比大box偏移误差更重要：预测wh的平方根而非值本身。</p>
+<p>综上损失函数为：</p>
+<script type="math/tex; mode=display">
+\lambda_{\text {cord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\text {obj }}\left[\left(x_{i}-\hat{x}_{i}\right)^{2}+\left(y_{i}-\hat{y}_{i}\right)^{2}\right]
+\\+\lambda_{\text {coord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\text {obj }}\left[(\sqrt{w_{i}}-\sqrt{\hat{w}_{i}})^{2}+(\sqrt{h_{i}}-\sqrt{\hat{h}_{i}})^{2}\right]
+\\+\sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\mathrm{obj}}\left(C_{i}-\hat{C}_{i}\right)^{2}
+\\+\lambda_{\mathrm{noobj}} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\mathrm{noobj}}\left(C_{i}-\hat{C}_{i}\right)^{2}
+\\+\sum_{i=0}^{S^{2}} \mathbb{1}_{i}^{\mathrm{obj}} \sum_{c \in \text { classes }}\left(p_{i}(c)-\hat{p}_{i}(c)\right)^{2}</script><p>注意，1^obj_i代表物体中心落在网格i内，1^obj_ij代表网格i的第j个box负责预测该物体。因此该损失函数仅惩罚含有物体中心的网格分类，仅惩罚负责预测那个物体的bbox坐标。</p>
+<h3 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h3><p>对大型物体，可能有多个cell同时给出较为准确的预测，可以理解，大型物体可能有好几个cell靠近中心点。使用nms筛选。</p>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><p>空间局限性：可预测的数量有限（98个，并且有空间独立）。对小的集群目标性能较差。对异形目标（长宽比）较差。对大小尺寸目标损失函数有问题。</p>
+<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p>yolov1出的时候，faster r-cnn已经出了，但好像还没开源（？）,而且这个时候精度还不如fast r-cnn，原文主要对比了fast r-cnn。此外原文还提到了Deformable parts models，Deep MultiBox，OverFeat，MultiGrasp等。</p>
+<p>对比faster r-cnn，yolo在pascalvoc数据集上速度更快，但精度较低。</p>
+<p>YOLO PASCAL2007+2012 mAP63.4 FPS45 输入448*448</p>
+<h2 id="yolov2"><a href="#yolov2" class="headerlink" title="yolov2"></a>yolov2</h2><p>又叫yolo9000，号称可以实现识别9000类目标。基于yolo改进，超越基于resnet的faster r-cnn和ssd并且更快。可以预测没有标签的目标类别。</p>
+<p>提出一种新的训练方法，可以实现同时利用检测数据集和分类数据集。</p>
+<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>引入BN</p>
+<p>改进基于高分辨率的预训练方法</p>
+<p>引入anchor boxes：优点：预测补偿（offsets）而非坐标本身，对网络来说更易于学习。移除原来的FC层，使用ancor boxes进行预测。</p>
+<p>anchor dimension聚类：不同于R-CNN手动选取anchor box的数量和尺度，本文使用<strong>k-means聚类</strong>计算box dimensions的先验信息。根据训练集所有的boxes使用k-means聚类计算出的k个box尺度即定为anchor的尺度。综合性能和计算速度，取k等于5。</p>
+<p>在k-means计算时，距离公式以IOU为标准。公式如下：</p>
+<script type="math/tex; mode=display">
+d(\text { box }, \text { centroid })=1-\operatorname{IOU}(\text { box, centroid })</script><p>注意：此时的IOU计算仅考虑形状，不考虑位置。</p>
+<p>位置预测：为使模型更容易收敛，预测相对于cell偏移值，坐标预测值落于0-1范围内（使用sigmoid激活函数）。</p>
+<p>模型对每个特征图像素点预测5个bbox，每个bbox预测5个值。</p>
+<script type="math/tex; mode=display">
+\begin{aligned} b_{x} &=\sigma\left(t_{x}\right)+c_{x} \\ b_{y} &=\sigma\left(t_{y}\right)+c_{y} \\ b_{w} &=p_{w} e^{t_{w}} \\ b_{h} &=p_{h} e^{t_{h}} \end{aligned}\\\operatorname{Pr}(\text { object }) * I O U(b, \text { object })=\sigma\left(t_{o}\right)</script><p>注意：此处预测仍然是相对于网格。对于416×416的输入，特征图为13×13，即每个特征图像素点对应原图32×32，即一个网格。由于每个cell对应到特征图上为一个像素点，因此坐标预测范围理应在0-1之间。</p>
+<p>细粒度特征：yolo在13<em>13的特征图上预测。加了一条passthrough layer带来前一层26\</em>26的特征。通过一个神秘（？）的调整把 26×26×512 的特征图调整到了 13×13×2048 ，然后和原来的特征图进行concatenate。</p>
+<p>多尺度训练：模型仅使用卷积和池化层，因此与输入尺度无关。训练模型使其适应多尺度输入。每10个batches随机换一个输入尺度： {320,352,…,608}. </p>
+<p>性能：YOLOv2 416×416 2007+2012 mAP76.8 FPS67 </p>
+<p>特征提取器：大多检测系统基于VGG16，但这玩意很笨重。本文提出了Darknet-19分类模型，作为Yolov2的基底。</p>
+<p>输出：先进行224<em>224分辨率的1000类分类训练，然后在448分辨率fine tune。然后溢出最后一个卷积层，加入一个新的卷积层，有1024个滤波器，每个跟着一个1\</em>1卷积，层数由输出纬度决定。对VOC数据集，预测5个anchors，每个anchor对应4个坐标值、一个置信度、20个类别概率，因此输出为5×（1+4+20）=125层通道。</p>
+<h3 id="训练-1"><a href="#训练-1" class="headerlink" title="训练"></a>训练</h3><p>识别与检测混合训练法：混合二者数据，若图片带有检测框标签，则进行完整的loss计算与反向传播，若图片仅有类别信息，则只根据分类损失进行反向传播。</p>
+<p>问题：使用softmax分类损失的数学前提是所有类别是exclusive的，而一般分类数据集标签会有细分之类的问题，并不是exclusive的。针对这个问题，作者建立了层级类别标签树（wordTree），对每一个层级（是互斥的）进行softmax分类。对于预测概率，使用条件概率公式，并且假定每个图片包含object的概率为1。</p>
+<p>在检测时，对每个box都预测一个概率树（对应类别树），自顶向下取最大分支直至绝对概率达到某个门限，即预测这个类别。</p>
+<p>测试结果表明，这种方法使得模型对仅有类别训练没有位置训练的类型有一定的检测泛化能力。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>看完论文后总觉得缺点什么，原来是没有损失函数，这部分原文里没有提到，函数式从网上抄的。总的来说，损失函数包含了上述内容大多关键点，还是很有必要分析一下的。</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{loss}_{t}=\sum_{i=0}^{W} \sum_{j=0}^{H} \sum_{k=0}^{A} 1_{\text {Max } IOU<Thresh} \lambda_{\text {noobj}} *\left(-b_{i j k}^{o}\right)^{2} \\+1_{t<12800} \lambda_{\text {prior}} * \sum_{r \epsilon(x, y, w, h)}\left(\text {prior}_{k}^{r}-b_{i j k}^{r}\right)^{2} \\+1_{k}^{\text {truth}}\left(\lambda_{\text {cord}} * \sum_{r \epsilon(x, y, w, h)}\left(t r u t h^{r}-b_{i j k}^{r}\right)^{2}\right.\\+\lambda_{o b j} *\left(\operatorname{IOU}_{\text {truth}}^{k}-b_{i j k}^{o}\right)^{2} \\\left.+\lambda_{\text {class}} *\left(\sum_{c=1}^{c}\left(\operatorname{truth}^{c}-b_{i j k}^{c}\right)^{2}\right)\right) \end{aligned}</script><p>W和H为最终特征图的分辨率（13×13），A为每个网格（特征图像素点）的anchor数目，原文取5。λ为各项权重。bo为置信度score，br为box的坐标和大小，bc为类别概率。</p>
+<p>对特征图上所有anchors进行遍历：</p>
+<p>第一项：若anchor与所有真值的最大IOU小于门限（原文门限取0.6），则计算该项，为no object的损失计算。此时给出的置信度越大则损失越大，即计算置信度与0的L2。</p>
+<p>第二项：仅在训练初期（已训练样本数量小于12800时）计算。该项计算的是真值中心点不在对应网格内，但IOU大于门限的anchor，计算预测值与先验box的差距。即希望这种情况网络不进行任何预测。</p>
+<p>第三项：真值Box中心落在对应网格内，仅匹配IOU最大的那个先验anchor进行计算，其余的anchors，除非IOU小于门限值被计入第一项，否则直接忽略（这一点类似于yolov1）。计算box与真值的损失，置信度损失（根据yolov1的条件概率公式，置信度与IOU进行L2计算），以及类别概率损失。</p>
+<h2 id="yolov3"><a href="#yolov3" class="headerlink" title="yolov3"></a>yolov3</h2><h3 id="改进-1"><a href="#改进-1" class="headerlink" title="改进"></a>改进</h3><p>首先，IOU门限被改至0.5。</p>
+<p>分类：使用多标签分类，移除softmax，因为作者发现这玩意对于提升性能并不是必要的。取而代之，使用independent logistic classiﬁers（逻辑回归），训练中使用二分类交叉熵损失。</p>
+<p>多尺度特征：使用了3个不同尺度（类似于FPN）。输出仍然包括了bbox，置信度，类别概率。输出维度为N ×N ×[A∗(4+1+C)] ，N为特征图边长，A为每个点的box数量，原文对COCO数据集取3，4为box的4个坐标，1为置信度，C为类别概率向量。除了原框架的最后一层外，使用之前两层进行2倍上采样，并且与更之前的特征图进行融合，从而同时得到有意义的语义和细粒度信息。</p>
+<p>Anchor尺度的先验聚类：仍然使用k-means聚类，只不过这次k取9。并且，根据结果的尺度，给三个尺度的特征图进行分配，每个特征图分配三个尺度的anchors。具体分配方式大致为，分辨率较高的特征图分配感受野较小的anchors，分辨率较低的特征图分配感受野较大的anchors，从结果上说这与retinanet基本一致。</p>
+<p>更新主干网络：从darknet19更新至darknet53。</p>
+<p>性能：从mAP上看，yolov3并没有比retinanet好，但有一说一，这玩意计算速度大约是retinanet的三倍。</p>
+<p>特点：yolov3相比前两代在小目标检测上有大幅提升，但对于中型和大型目标有丶差。</p>
+<p>作者有试过但没成功的idea：坐标预测，直接预测线性补偿；focal loss：作者认为可能是因为yolo本身有基于条件概率的置信度预测，因此不存在大量背景的负样本造成的不均衡问题；双门限：在faster r-cnn中，IOU大于0.7的被认为是正样本，小于0.3的被认为是负样本（背景），其余被忽略，而在yolo中，这样做并没有得到一个好结果。</p>
+<h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>原文这次同样没有提到损失函数的具体公式，但根据上述内容不难看出，Yolov3相对于yolov2在损失函数上的变化主要为在分类中使用了逻辑回归和交叉熵损失。根据源码，公式应该如下：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\text { loss (object) }=\lambda_{\text {coord }} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{ij}^{obj}\left[\left(x_{i}-\hat{x}_{i}\right)^{2}+\left(y_{i}-\hat{y}_{i}\right)^{2}\right]+} \\ {\quad \lambda_{\text {coord}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{j}^{o b j}\left(2-w_{i} \times h_{i}\right)\left[\left(w_{i}-\hat{w}_{i}\right)^{2}+\left(h_{i}-\hat{h}_{i}\right)^{2}\right]-} \\ {\sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{obj}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]-} \\ {\quad \quad \lambda_{\text {noobj}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{\text {noobj}}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]} \\ {\sum_{i=0}^{K \times K} I_{i j}^{o b j} \sum_{c \in \text { classes }}\left[\hat{p}_{i}(c) \log \left(p_{i}(c)\right)+\left(1-\hat{p}_{i}(c)\right) \log \left(1-p_{i}(c)\right)\right]}\end{array}</script><p>对于无obj的情况，仅计算置信度，不同于之前的L2，此处采用交叉熵作为置信度的损失函数。同理在有obj的情况，置信度和分类概率都采用交叉熵。对于有无obj的判断原理同之前，只是门限被改至0.5。同样，在每个网格仅有一个anchor即IOU最高的anchor被赋予真值，其余的不参与计算。</p>
+<h1 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h1><p>待填坑。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>matplotlib学习</title>
+    <url>/2019/09/13/matplotlib-learn/</url>
+    <content><![CDATA[<p>想仔细学习一下matplotlib这个库很久了，经常会用到但有些地方一直没搞明白，网上找了一些blog感觉写的也不是很系统，于是自己开始啃官方文档</p><a id="more"></a>
+<h1 id="那就开始8"><a href="#那就开始8" class="headerlink" title="那就开始8"></a>那就开始8</h1><p>首先是figure类，即一幅图，会追踪所有的Axes对象，如果不是完全空白的图像的话一个figure至少应该含有一个axes.</p>
+<p>Axes即一个图像，axes包含了要画图像的数据，一个figure可含有多个axes。一个axes可能含有2个或三个axis，与data limits关联，即 <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_xlim.html#matplotlib.axes.Axes.set_xlim" target="_blank" rel="noopener"><code>set_xlim()</code></a> and <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.set_ylim.html#matplotlib.axes.Axes.set_ylim" target="_blank" rel="noopener"><code>set_ylim()</code></a> <code>Axes</code>methods。每个axes含有一个title，xlabel和ylabel，<code>set_title()</code>以及<code>set_xlabel()</code>。</p>
+<p>Axis即数轴，</p>
+<p>数据最好是numpy.array格式。</p>
+<h1 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h1><p>是matplotlib的一个模块，对于这里面的函数，总是存在一个“当前”的figure和axes，被自动或者手动创建。例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">plt.plot(x, x, label=<span class="string">'linear'</span>)</span><br><span class="line">plt.plot(x, x**<span class="number">2</span>, label=<span class="string">'quadratic'</span>)</span><br><span class="line">plt.plot(x, x**<span class="number">3</span>, label=<span class="string">'cubic'</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">'x label'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y label'</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">"Simple Plot"</span>)</span><br><span class="line"></span><br><span class="line">plt.legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://matplotlib.org/_images/sphx_glr_usage_003.png" alt="../../_images/sphx_glr_usage_003.png"></p>
+<p>pylab不被推荐使用。</p>
+<p>Figure可由<code>plt.figure()</code>创建，</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>todo</title>
+    <url>/2019/09/12/todo/</url>
+    <content><![CDATA[<p>好好学习一下plt库</p><p>bbox regression和nms算法，及其手动实现</p><p>读ssd和yolo系列的论文，可能rcnn系列也要重读一下</p><a id="more"></a>
+
+
+<p>手动实现faster-rcnn或者retinanet</p>
+<p>另一边，下周前尽量搞定报告和ppt，草好像还有fpga那块，感觉做不完。。</p>
+<p>之后：去噪：基于GAN的和传统方法，基于GAN的超分辨，如果能拿到地物分类的数据集的话也可以做一做</p>
+<p>重新学习一下底层理论</p>
+<p>做几个kaggle</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>告白</title>
+    <url>/2019/09/11/gaobai/</url>
+    <content><![CDATA[<p>告白的意思是告诉对方你的自白，向对方传递自己内心的想法</p><p>从这个角度来说……我也不知道有没有成功，大概成功了吧</p><a id="more"></a>
+
+<p>但从一般意义上来说，</p>
+<p>发个贴纪念一下自己第一次告白以及第一次告白失败</p>
+<p>于2019-09-11晚</p>
+<hr>
+<h1 id="某日编辑"><a href="#某日编辑" class="headerlink" title="某日编辑"></a>某日编辑</h1><p>虽然说是告白，只是确认一下对方有没有想法而已，遗憾的是对方并没有，所以还没开始就结束了。</p>
+<hr>
+<h1 id="番外"><a href="#番外" class="headerlink" title="番外"></a>番外</h1><p>我理想中的爱情是日久生情的那种，而不是一见钟情。</p>
+<blockquote>
+<p>话说回来，9012年了竟然还有人相信一见钟情，还有人愿意等命中之人，真是……幸福，没有危机感，也不着急，哪怕是自己也知道希望渺茫。</p>
+<p>也许是我什么都不懂吧。</p>
+</blockquote>
+<p>遗憾的是，命运并没有给我安排日久生情的机会，不特意去创造机会的话，恐怕以后也不会安排。所以也就就像，自己的幸福要靠自己去努力争取，的感觉吧。</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>闲聊</title>
+    <url>/2019/09/08/%E9%97%B2%E8%81%8A/</url>
+    <content><![CDATA[<p>点点点</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>测试用</title>
+    <url>/2019/09/07/%E6%94%B9%E5%90%8D%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<p> 发新文测试</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>wei,zaima</title>
+    <url>/2019/08/21/hello-world/</url>
+    <content><![CDATA[<p>buzai, cmn</p>
+<h1 id="还行"><a href="#还行" class="headerlink" title="还行"></a>还行</h1><p>我佛了</p>
+<h1 id="真的吗"><a href="#真的吗" class="headerlink" title="真的吗"></a>真的吗</h1><p>神秘。</p>
+<h1 id="激霸"><a href="#激霸" class="headerlink" title="激霸"></a>激霸</h1><p>看到这的建议请客</p>
+]]></content>
+  </entry>
+</search>
