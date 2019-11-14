@@ -337,8 +337,15 @@
 <h1 id="yolo系列"><a href="#yolo系列" class="headerlink" title="yolo系列"></a>yolo系列</h1><h2 id="yolov1"><a href="#yolov1" class="headerlink" title="yolov1"></a>yolov1</h2><h3 id="模型输出的概率建模"><a href="#模型输出的概率建模" class="headerlink" title="模型输出的概率建模"></a>模型输出的概率建模</h3><p>图片首先被分割为S*S的网格（grid cell）。如果一个bbox的中心落在一个网格里，则该网格负责检测该物体。（对于pascal数据集，S定为7）</p>
 <p>每个网格预测B个bbox及其confidence score，confidence定义为Pr(Object)∗IOU。 若该网格内没有物体，score应当是0；否则score被希望等于IOU（即如果网格不包含目标中心，则Pr(Object)=0，否则=1）。这个score反应了置信度，此处置信度是指模型预测的box是否真的包含目标（即第一项）以及模型自己认为box的准确度（即第二项）。</p>
 <p>每个bbox包含5个预测值，分别为x,y,w,h和score。(x,y)坐标是box中心相对于网格边界（？），(w,h)是相对于整幅图像。score代预测box与真实值的iou。（iou不是能通过xywh直接算出来吗？）</p>
-<p>每个cell同时还预测C个类别概率，即<br>$$<br>\begin{equation}<br>\operatorname{Pr}\left(\text { Class }<em>{i} | \text { Object }\right)<br>\end{equation}<br>$$<br>根据条件概率公式，有：<br>$$<br>\operatorname{Pr}\left(\text { Class }</em>{i} \text { |Object }\right) * \operatorname{Pr}(\text { Object }) * \text { IOU }^{truth}<em>{pred}=\operatorname{Pr}\left(\text { Class }</em>{i}\right) * \text { IOU }^{truth}_{pred}<br>$$<br>在原文中，对于PASCAL VOC数据集，有20类目标（C=20）,采用S=7，B=2，最终预测为</p>
-<p>$$<br>S \times S \times(B * 5+C)<br>$$<br>即，7*7个网格，每个网格预测B个bbox，每个bbox有5个预测值，分别为xywh和score，以及20个类别概率值。</p>
+<p>每个cell同时还预测C个类别概率，即</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\operatorname{Pr}\left(\text { Class }_{i} | \text { Object }\right)
+\end{equation}</script><p>根据条件概率公式，有：</p>
+<script type="math/tex; mode=display">
+\operatorname{Pr}\left(\text { Class }_{i} \text { |Object }\right) * \operatorname{Pr}(\text { Object }) * \text { IOU }^{truth}_{pred}=\operatorname{Pr}\left(\text { Class }_{i}\right) * \text { IOU }^{truth}_{pred}</script><p>在原文中，对于PASCAL VOC数据集，有20类目标（C=20）,采用S=7，B=2，最终预测为</p>
+<script type="math/tex; mode=display">
+S \times S \times(B * 5+C)</script><p>即，7*7个网格，每个网格预测B个bbox，每个bbox有5个预测值，分别为xywh和score，以及20个类别概率值。</p>
 <h3 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h3><p>基于用于图片分类的googleNet，有一定的调整。两个网络模型，正常（yolo）的和tiny的(fast yolo)，正常的有24个卷积层+2个全连接层，tiny的有9个卷积层，滤波器也更少。使用了dropout在第一个全连接层之后（0.5）。</p>
 <h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>imagenet上预训练分类，训练前20个卷积层，后面连了平均池化和一个全连接层。预训练使用的是224*224的输入，正式训练扩大了2倍长宽。使用了几何数据扩充。</p>
 <p>输出xywh被归一化至0-1。激活函数使用leaky relu。</p>
@@ -352,7 +359,13 @@
 </ol>
 <p>解决问题：大量不含目标的网格，即正负样本严重不均衡的问题：加权，含目标的加权至5，不含的至0.5。</p>
 <p>解决问题：小box的小偏移误差比大box偏移误差更重要：预测wh的平方根而非值本身。</p>
-<p>综上损失函数为：<br>$$<br>\lambda_{\text {cord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}<em>{i j}^{\text {obj }}\left[\left(x</em>{i}-\hat{x}<em>{i}\right)^{2}+\left(y</em>{i}-\hat{y}<em>{i}\right)^{2}\right]<br>\+\lambda</em>{\text {coord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}<em>{i j}^{\text {obj }}\left[(\sqrt{w</em>{i}}-\sqrt{\hat{w}<em>{i}})^{2}+(\sqrt{h</em>{i}}-\sqrt{\hat{h}<em>{i}})^{2}\right]<br>\+\sum</em>{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}<em>{i j}^{\mathrm{obj}}\left(C</em>{i}-\hat{C}<em>{i}\right)^{2}<br>\+\lambda</em>{\mathrm{noobj}} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}<em>{i j}^{\mathrm{noobj}}\left(C</em>{i}-\hat{C}<em>{i}\right)^{2}<br>\+\sum</em>{i=0}^{S^{2}} \mathbb{1}<em>{i}^{\mathrm{obj}} \sum</em>{c \in \text { classes }}\left(p_{i}(c)-\hat{p}_{i}(c)\right)^{2}<br>$$<br>注意，1^obj_i代表物体中心落在网格i内，1^obj_ij代表网格i的第j个box负责预测该物体。因此该损失函数仅惩罚含有物体中心的网格分类，仅惩罚负责预测那个物体的bbox坐标。</p>
+<p>综上损失函数为：</p>
+<script type="math/tex; mode=display">
+\lambda_{\text {cord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\text {obj }}\left[\left(x_{i}-\hat{x}_{i}\right)^{2}+\left(y_{i}-\hat{y}_{i}\right)^{2}\right]
+\\+\lambda_{\text {coord }} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\text {obj }}\left[(\sqrt{w_{i}}-\sqrt{\hat{w}_{i}})^{2}+(\sqrt{h_{i}}-\sqrt{\hat{h}_{i}})^{2}\right]
+\\+\sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\mathrm{obj}}\left(C_{i}-\hat{C}_{i}\right)^{2}
+\\+\lambda_{\mathrm{noobj}} \sum_{i=0}^{S^{2}} \sum_{j=0}^{B} \mathbb{1}_{i j}^{\mathrm{noobj}}\left(C_{i}-\hat{C}_{i}\right)^{2}
+\\+\sum_{i=0}^{S^{2}} \mathbb{1}_{i}^{\mathrm{obj}} \sum_{c \in \text { classes }}\left(p_{i}(c)-\hat{p}_{i}(c)\right)^{2}</script><p>注意，1^obj_i代表物体中心落在网格i内，1^obj_ij代表网格i的第j个box负责预测该物体。因此该损失函数仅惩罚含有物体中心的网格分类，仅惩罚负责预测那个物体的bbox坐标。</p>
 <h3 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h3><p>对大型物体，可能有多个cell同时给出较为准确的预测，可以理解，大型物体可能有好几个cell靠近中心点。使用nms筛选。</p>
 <h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><p>空间局限性：可预测的数量有限（98个，并且有空间独立）。对小的集群目标性能较差。对异形目标（长宽比）较差。对大小尺寸目标损失函数有问题。</p>
 <h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p>yolov1出的时候，faster r-cnn已经出了，但好像还没开源（？）,而且这个时候精度还不如fast r-cnn，原文主要对比了fast r-cnn。此外原文还提到了Deformable parts models，Deep MultiBox，OverFeat，MultiGrasp等。</p>
@@ -364,11 +377,13 @@
 <p>改进基于高分辨率的预训练方法</p>
 <p>引入anchor boxes：优点：预测补偿（offsets）而非坐标本身，对网络来说更易于学习。移除原来的FC层，使用ancor boxes进行预测。</p>
 <p>anchor dimension聚类：不同于R-CNN手动选取anchor box的数量和尺度，本文使用<strong>k-means聚类</strong>计算box dimensions的先验信息。根据训练集所有的boxes使用k-means聚类计算出的k个box尺度即定为anchor的尺度。综合性能和计算速度，取k等于5。</p>
-<p>在k-means计算时，距离公式以IOU为标准。公式如下：<br>$$<br>d(\text { box }, \text { centroid })=1-\operatorname{IOU}(\text { box, centroid })<br>$$</p>
-<p>注意：此时的IOU计算仅考虑形状，不考虑位置。</p>
+<p>在k-means计算时，距离公式以IOU为标准。公式如下：</p>
+<script type="math/tex; mode=display">
+d(\text { box }, \text { centroid })=1-\operatorname{IOU}(\text { box, centroid })</script><p>注意：此时的IOU计算仅考虑形状，不考虑位置。</p>
 <p>位置预测：为使模型更容易收敛，预测相对于cell偏移值，坐标预测值落于0-1范围内（使用sigmoid激活函数）。</p>
-<p>模型对每个特征图像素点预测5个bbox，每个bbox预测5个值。<br>$$<br>\begin{aligned} b_{x} &amp;=\sigma\left(t_{x}\right)+c_{x} \ b_{y} &amp;=\sigma\left(t_{y}\right)+c_{y} \ b_{w} &amp;=p_{w} e^{t_{w}} \ b_{h} &amp;=p_{h} e^{t_{h}} \end{aligned}\\operatorname{Pr}(\text { object }) * I O U(b, \text { object })=\sigma\left(t_{o}\right)<br>$$</p>
-<p>注意：此处预测仍然是相对于网格。对于416×416的输入，特征图为13×13，即每个特征图像素点对应原图32×32，即一个网格。由于每个cell对应到特征图上为一个像素点，因此坐标预测范围理应在0-1之间。</p>
+<p>模型对每个特征图像素点预测5个bbox，每个bbox预测5个值。</p>
+<script type="math/tex; mode=display">
+\begin{aligned} b_{x} &=\sigma\left(t_{x}\right)+c_{x} \\ b_{y} &=\sigma\left(t_{y}\right)+c_{y} \\ b_{w} &=p_{w} e^{t_{w}} \\ b_{h} &=p_{h} e^{t_{h}} \end{aligned}\\\operatorname{Pr}(\text { object }) * I O U(b, \text { object })=\sigma\left(t_{o}\right)</script><p>注意：此处预测仍然是相对于网格。对于416×416的输入，特征图为13×13，即每个特征图像素点对应原图32×32，即一个网格。由于每个cell对应到特征图上为一个像素点，因此坐标预测范围理应在0-1之间。</p>
 <p>细粒度特征：yolo在13<em>13的特征图上预测。加了一条passthrough layer带来前一层26\</em>26的特征。通过一个神秘（？）的调整把 26×26×512 的特征图调整到了 13×13×2048 ，然后和原来的特征图进行concatenate。</p>
 <p>多尺度训练：模型仅使用卷积和池化层，因此与输入尺度无关。训练模型使其适应多尺度输入。每10个batches随机换一个输入尺度： {320,352,…,608}. </p>
 <p>性能：YOLOv2 416×416 2007+2012 mAP76.8 FPS67 </p>
@@ -378,7 +393,9 @@
 <p>问题：使用softmax分类损失的数学前提是所有类别是exclusive的，而一般分类数据集标签会有细分之类的问题，并不是exclusive的。针对这个问题，作者建立了层级类别标签树（wordTree），对每一个层级（是互斥的）进行softmax分类。对于预测概率，使用条件概率公式，并且假定每个图片包含object的概率为1。</p>
 <p>在检测时，对每个box都预测一个概率树（对应类别树），自顶向下取最大分支直至绝对概率达到某个门限，即预测这个类别。</p>
 <p>测试结果表明，这种方法使得模型对仅有类别训练没有位置训练的类型有一定的检测泛化能力。</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>看完论文后总觉得缺点什么，原来是没有损失函数，这部分原文里没有提到，函数式从网上抄的。总的来说，损失函数包含了上述内容大多关键点，还是很有必要分析一下的。<br>$$<br>\begin{aligned} \operatorname{loss}<em>{t}=\sum</em>{i=0}^{W} \sum_{j=0}^{H} \sum_{k=0}^{A} 1_{\text {Max } IOU&lt;Thresh} \lambda_{\text {noobj}} *\left(-b_{i j k}^{o}\right)^{2} \+1_{t&lt;12800} \lambda_{\text {prior}} * \sum_{r \epsilon(x, y, w, h)}\left(\text {prior}<em>{k}^{r}-b</em>{i j k}^{r}\right)^{2} \+1_{k}^{\text {truth}}\left(\lambda_{\text {cord}} * \sum_{r \epsilon(x, y, w, h)}\left(t r u t h^{r}-b_{i j k}^{r}\right)^{2}\right.\+\lambda_{o b j} *\left(\operatorname{IOU}<em>{\text {truth}}^{k}-b</em>{i j k}^{o}\right)^{2} \\left.+\lambda_{\text {class}} *\left(\sum_{c=1}^{c}\left(\operatorname{truth}^{c}-b_{i j k}^{c}\right)^{2}\right)\right) \end{aligned}<br>$$<br>W和H为最终特征图的分辨率（13×13），A为每个网格（特征图像素点）的anchor数目，原文取5。λ为各项权重。bo为置信度score，br为box的坐标和大小，bc为类别概率。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>看完论文后总觉得缺点什么，原来是没有损失函数，这部分原文里没有提到，函数式从网上抄的。总的来说，损失函数包含了上述内容大多关键点，还是很有必要分析一下的。</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{loss}_{t}=\sum_{i=0}^{W} \sum_{j=0}^{H} \sum_{k=0}^{A} 1_{\text {Max } IOU<Thresh} \lambda_{\text {noobj}} *\left(-b_{i j k}^{o}\right)^{2} \\+1_{t<12800} \lambda_{\text {prior}} * \sum_{r \epsilon(x, y, w, h)}\left(\text {prior}_{k}^{r}-b_{i j k}^{r}\right)^{2} \\+1_{k}^{\text {truth}}\left(\lambda_{\text {cord}} * \sum_{r \epsilon(x, y, w, h)}\left(t r u t h^{r}-b_{i j k}^{r}\right)^{2}\right.\\+\lambda_{o b j} *\left(\operatorname{IOU}_{\text {truth}}^{k}-b_{i j k}^{o}\right)^{2} \\\left.+\lambda_{\text {class}} *\left(\sum_{c=1}^{c}\left(\operatorname{truth}^{c}-b_{i j k}^{c}\right)^{2}\right)\right) \end{aligned}</script><p>W和H为最终特征图的分辨率（13×13），A为每个网格（特征图像素点）的anchor数目，原文取5。λ为各项权重。bo为置信度score，br为box的坐标和大小，bc为类别概率。</p>
 <p>对特征图上所有anchors进行遍历：</p>
 <p>第一项：若anchor与所有真值的最大IOU小于门限（原文门限取0.6），则计算该项，为no object的损失计算。此时给出的置信度越大则损失越大，即计算置信度与0的L2。</p>
 <p>第二项：仅在训练初期（已训练样本数量小于12800时）计算。该项计算的是真值中心点不在对应网格内，但IOU大于门限的anchor，计算预测值与先验box的差距。即希望这种情况网络不进行任何预测。</p>
@@ -392,7 +409,8 @@
 <p>特点：yolov3相比前两代在小目标检测上有大幅提升，但对于中型和大型目标有丶差。</p>
 <p>作者有试过但没成功的idea：坐标预测，直接预测线性补偿；focal loss：作者认为可能是因为yolo本身有基于条件概率的置信度预测，因此不存在大量背景的负样本造成的不均衡问题；双门限：在faster r-cnn中，IOU大于0.7的被认为是正样本，小于0.3的被认为是负样本（背景），其余被忽略，而在yolo中，这样做并没有得到一个好结果。</p>
 <h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>原文这次同样没有提到损失函数的具体公式，但根据上述内容不难看出，Yolov3相对于yolov2在损失函数上的变化主要为在分类中使用了逻辑回归和交叉熵损失。根据源码，公式应该如下：</p>
-<p>$$<br>\begin{array}{l}{\text { loss (object) }=\lambda_{\text {coord }} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{ij}^{obj}\left[\left(x_{i}-\hat{x}<em>{i}\right)^{2}+\left(y</em>{i}-\hat{y}<em>{i}\right)^{2}\right]+} \ {\quad \lambda</em>{\text {coord}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{j}^{o b j}\left(2-w_{i} \times h_{i}\right)\left[\left(w_{i}-\hat{w}<em>{i}\right)^{2}+\left(h</em>{i}-\hat{h}<em>{i}\right)^{2}\right]-} \ {\sum</em>{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{obj}\left[\hat{C}<em>{i} \log \left(C</em>{i}\right)+\left(1-\hat{C}<em>{i}\right) \log \left(1-C</em>{i}\right)\right]-} \ {\quad \quad \lambda_{\text {noobj}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{\text {noobj}}\left[\hat{C}<em>{i} \log \left(C</em>{i}\right)+\left(1-\hat{C}<em>{i}\right) \log \left(1-C</em>{i}\right)\right]} \ {\sum_{i=0}^{K \times K} I_{i j}^{o b j} \sum_{c \in \text { classes }}\left[\hat{p}<em>{i}(c) \log \left(p</em>{i}(c)\right)+\left(1-\hat{p}<em>{i}(c)\right) \log \left(1-p</em>{i}(c)\right)\right]}\end{array}<br>$$<br>对于无obj的情况，仅计算置信度，不同于之前的L2，此处采用交叉熵作为置信度的损失函数。同理在有obj的情况，置信度和分类概率都采用交叉熵。对于有无obj的判断原理同之前，只是门限被改至0.5。同样，在每个网格仅有一个anchor即IOU最高的anchor被赋予真值，其余的不参与计算。</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\text { loss (object) }=\lambda_{\text {coord }} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{ij}^{obj}\left[\left(x_{i}-\hat{x}_{i}\right)^{2}+\left(y_{i}-\hat{y}_{i}\right)^{2}\right]+} \\ {\quad \lambda_{\text {coord}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{j}^{o b j}\left(2-w_{i} \times h_{i}\right)\left[\left(w_{i}-\hat{w}_{i}\right)^{2}+\left(h_{i}-\hat{h}_{i}\right)^{2}\right]-} \\ {\sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{obj}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]-} \\ {\quad \quad \lambda_{\text {noobj}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{\text {noobj}}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]} \\ {\sum_{i=0}^{K \times K} I_{i j}^{o b j} \sum_{c \in \text { classes }}\left[\hat{p}_{i}(c) \log \left(p_{i}(c)\right)+\left(1-\hat{p}_{i}(c)\right) \log \left(1-p_{i}(c)\right)\right]}\end{array}</script><p>对于无obj的情况，仅计算置信度，不同于之前的L2，此处采用交叉熵作为置信度的损失函数。同理在有obj的情况，置信度和分类概率都采用交叉熵。对于有无obj的判断原理同之前，只是门限被改至0.5。同样，在每个网格仅有一个anchor即IOU最高的anchor被赋予真值，其余的不参与计算。</p>
 <h1 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h1><p>待填坑。</p>
 
     </div>

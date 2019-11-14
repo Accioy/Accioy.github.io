@@ -335,7 +335,6 @@
 <p>不过我平时部署都是powershell做的，主要是比cmd好看一些，虽然我还有更强大的mobaxterm就是了。查了一下powershell的脚本格式是.ps1（也不知道为什么叫这个）。</p>
 <p>以下是脚本：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Start-Transcript</span> <span class="string">"path-to-log\log.txt"</span> -force</span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="built_in">Stop-Transcript</span></span><br></pre></td></tr></table></figure>
-
 <p>Start-Transcript和<code>Stop-Transcript</code>会记录中间的命令行输出，并保存到log文件中，缺点是不记录命令本身。未找到更好的解决方案。</p>
 <p>本来想基于命令行变量每次部署建新的日志文件根据时间命名文件，但不知为什么不行。于是就这样了。</p>
 <h1 id="自动"><a href="#自动" class="headerlink" title="自动"></a>自动</h1><p>目前的想法是windows计划任务，定时定期执行脚本，目前还没试。</p>

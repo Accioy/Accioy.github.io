@@ -55,17 +55,17 @@
   };
 </script>
 
-  <meta name="description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
+  <meta name="description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="乱七八糟的坑以及没什么卯月的知识">
 <meta property="og:url" content="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/index.html">
 <meta property="og:site_name" content="Accio_">
-<meta property="og:description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
+<meta property="og:description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-22T12:02:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乱七八糟的坑以及没什么卯月的知识">
-<meta name="twitter:description" content="nv docker要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。">
+<meta name="twitter:description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
   <link rel="canonical" href="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/">
 
 
@@ -323,7 +323,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加–runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
+        <h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
 <p><del>依赖：查了nv-docker的github issue，感觉貌似是容器包含cuda，依赖主机的显卡驱动。</del></p>
 <p>没错就是这样，<a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements</a></p>
 <p>根据这个wiki说明，cuda的镜像启动需要依赖显卡驱动，并且根据镜像内的cuda版本对显卡驱动版本有要求，具体版本对应要求见上述链接。</p>
@@ -339,10 +339,10 @@
 <p>更新包：<strong>apt-get upgrade</strong>　　　#更新所有已安装的软件（upgrade只是简单的更新包，不管这些依赖，它不添不删。）</p>
 <p>更新包2：apt-get dist-upgrade　#包与包之间存在各种依赖关系。而dist-upgrade可以根据依赖关系的变化添删包。（<strong>依赖有时会出错，建议新手谨慎使用</strong>）</p>
 <p>补充：在执行 <strong>upgrade</strong> or <strong>dist-upgrade</strong> 之前一定要执行 <strong>update</strong>, 这样才能获取最新</p>
-<p>安装软件：apt-get install XXX [–reinstall]　#<strong>–reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
+<p>安装软件：apt-get install XXX [—reinstall]　#<strong>—reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
 <p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖（安装搜狗拼音实例有用到）</p>
-<p>删除软件：apt-get remove XXX [–purge]　#–purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX –purge</strong></p>
-<p>-——————————————————————————————————————————————————–</p>
+<p>删除软件：apt-get remove XXX [—purge]　#—purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX —purge</strong></p>
+<p>-————————————————————————————————————————————————————————————————————————————</p>
 <p>其他命令：(特殊环境下使用)</p>
 <p>搜索软件：apt-get search xxx</p>
 <p>检查是否有损坏的依赖：apt-get check　　　（偶尔想起来或者软件打不开的时候使用【有时候被清理了】）</p>
@@ -360,7 +360,7 @@
 <p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里</p>
 <p>命令后加 &amp;后台运行</p>
 <p>正在运行时ctrl+z切后台</p>
-<p>ps -ef可查看全部后台，|grep ***可以查找</p>
+<p>ps -ef可查看全部后台，|grep <em>*</em>可以查找</p>
 <p>ctrl+s暂停终端变化，ctrl+q继续（好像是吧</p>
 <p>ls -lR|grep “^-“|wc -l<br>查看某文件夹下文件夹的个数，包括子文件夹里的。</p>
 <p>复制文件夹：cp xxx /www/wwwroot -r</p>
@@ -370,7 +370,7 @@
 <p>ps -e|grep ssh</p>
 <p>默认root不能远程登录，需要修改配置文件</p>
 <p>vim /etc/ssh/sshd_config</p>
-<p>vim搜索：/***</p>
+<p>vim搜索：/<em>*</em></p>
 <p>修改PermitRootLogin项，默认为without-password，修改为yes</p>
 <h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>i插入，esc命令模式，:到尾部输入命令，w保存，q退出，!强制</p>
 <p>保存退出 ：:wq!</p>
