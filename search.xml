@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>检测识别问题中的metrics</title>
+    <url>/2019/11/14/%E6%A3%80%E6%B5%8B%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84metrics/</url>
+    <content><![CDATA[<p>之前一直记不熟各种指标的具体计算，本文准备彻底搞定这个问题，涵盖目前遇到过的所有评价指标。</p><h1 id="TP，TN，FP，FN"><a href="#TP，TN，FP，FN" class="headerlink" title="TP，TN，FP，FN"></a>TP，TN，FP，FN</h1><a id="more"></a>
+<p>首先是true-false和positive-negative这两对词。以二分类为例：</p>
+<p>positive和negative指的是预测的分类是正样本还是负样本，true和false指的是预测结果是对的还是错的。</p>
+<p>因此：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">实际类别\预测类别</th>
+<th style="text-align:center">正样本</th>
+<th style="text-align:center">负样本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正样本</td>
+<td style="text-align:center">TP</td>
+<td style="text-align:center">FN</td>
+</tr>
+<tr>
+<td style="text-align:center">负样本</td>
+<td style="text-align:center">FP</td>
+<td style="text-align:center">TN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>基于这些数值可以计算各项指标：</p>
+<h1 id="Accuracy-precision-recall等"><a href="#Accuracy-precision-recall等" class="headerlink" title="Accuracy, precision, recall等"></a>Accuracy, precision, recall等</h1><h2 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h2><script type="math/tex; mode=display">
+A C C=\frac{T P+T N}{T P+T N+F P+F N}</script><p>分子为所有<strong>正确预测</strong>了的样本数目（即正样本被预测为正，负样本被预测为负），分母为所有样本总数。</p>
+<p>Accuracy代表了<strong>所有样本中，被正确预测的样本所占的比例</strong>。</p>
+<p>其缺陷在于，当正负样本严重不均衡的时候无法反映出模型的真实水平。</p>
+<h2 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h2><script type="math/tex; mode=display">
+P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，分母为所有被预测为正的个数。</p>
+<p>Precision代表了<strong>被预测为正的样本中，真的是正样本的比例</strong>。又叫查准率。</p>
+<h2 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h2><script type="math/tex; mode=display">
+\operatorname{Recall}=\frac{T P}{T P+F N}</script><p>分子为正被预测为正，分母为正样本的总数。</p>
+<p>Recall代表了<strong>所有正样本中，被正确预测为正样本的比例</strong>。</p>
+<p>Recall一般被称为<strong>召回率</strong>，，又叫Sensitivity，又叫查全率 ，它和一些传统方法中所说的<strong>正检率</strong>是一个概念。</p>
+<h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>上述的Sensitivity对应的有Specificity：</p>
+<script type="math/tex; mode=display">
+\operatorname{Specificity}=\frac{T N}{FP+TN}</script><p>代表实际负样本中被预测为负的比例。</p>
+<h2 id="f1-score"><a href="#f1-score" class="headerlink" title="f1-score"></a>f1-score</h2><script type="math/tex; mode=display">
+\mathrm{F} 1=\frac{2 * P * R}{P+R}</script><p>f1-score是对precision和recall的调和平均值。</p>
+<h1 id="正检率，虚警率，漏警率"><a href="#正检率，虚警率，漏警率" class="headerlink" title="正检率，虚警率，漏警率"></a>正检率，虚警率，漏警率</h1><p>正检率（P_d）：正样本被正确检测到的概率，<strong>即recall</strong>。</p>
+<p>漏警率（P_m）：正样本没有被预测为正的概率，即1-P_d，即1-recall。</p>
+<p>虚警率（P_f）：负样本被预测为正的概率，即1-Specificity。</p>
+<h1 id="指标间的关系"><a href="#指标间的关系" class="headerlink" title="指标间的关系"></a>指标间的关系</h1><p>为了更简单清楚的说明，用P和N表示预测结果是正和负，用P^和N^表示正样本和负样本。不用*号的原因是我不想在markdown里打一堆转义符。我们有P+N=P^+N^。</p>
+<p>对于一个正常的识别模型，P中大多数应当是P^，小部分是N^；同样N中大多应当是N^，小部分是P^。</p>
+<p>Precision和recall是互相矛盾的一对指标。直观地理解，precision为所有P中P^的比例，要想提高这个比例，需要更加严格的筛选，更严格的筛选意味着，模型只会将那些预测概率非常高的样本预测为P，显然这会更多地筛选掉实际为N^的P，剩下的P中P^。而对于recall，recall代表P^中P的比例，更加严格的筛选会导致，一些P^的样本没有被预测为P，从而导致recall下降。</p>
+<p>同理，正检率与虚警率成正相关关系。</p>
+<h1 id="ROC曲线与PR曲线"><a href="#ROC曲线与PR曲线" class="headerlink" title="ROC曲线与PR曲线"></a>ROC曲线与PR曲线</h1><h2 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h2><p>ROC曲线即纵轴为正检率，横轴为虚警率。</p>
+<p>懒得放示意图了，简单描述一下，一般为从左下到右上的凹函数（注意凹函数的定义），区间为(0,0),(1,1)的正方形区域内。评估方法为计算曲线下积分面积，即AUC。</p>
+<p>对于瞎猜模型，ROC曲线应当是一条从(0,0)到(1,1)的对角直线，故AUC为0.5。</p>
+<p>对于一个正常的模型，AUC应当在0.5到1之间。越大越好。</p>
+<h2 id="PR曲线"><a href="#PR曲线" class="headerlink" title="PR曲线"></a>PR曲线</h2><p>类似地，PR曲线纵轴为precision，横轴为recall。</p>
+<p>PR曲线一般为从左上到右下的凹函数，区间同样在(0,0),(1,1)的正方形区域。评估方法同样为计算曲线下积分值，称为AP值，对于多个分类，取平均，称为mAP值。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+  </entry>
+  <entry>
     <title>需要的感觉</title>
     <url>/2019/10/31/let-it-go/</url>
     <content><![CDATA[<p>Let it go，说的简单，你能做到吗</p><p>我在想是不是我对自己的要求太高了。客观来说，本来就是个垃圾玩意，你再怎么努力也很难脱离这个垃圾范畴。</p><a id="more"></a>
