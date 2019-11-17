@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>miku未来有你演唱会</title>
+    <url>/2019/11/17/miku%E6%9C%AA%E6%9D%A5%E6%9C%89%E4%BD%A0%E6%BC%94%E5%94%B1%E4%BC%9A/</url>
+    <content><![CDATA[<hr><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2922328447&auto=0&height=430"></iframe><hr><p>昨晚去看了初音的未来有你live，爽到啊。虽然是普票视角一般。之前还有点担心，毕竟去年出过事而且这次通知仍然是不允许站call，我自己不站倒是无所谓但不可能保证所有观众的素质，而且不站着打call看个激霸日式live，既然去了不把自己搞到精疲力竭站不起来不就亏了嘛——这是我看live的信念。好在5点看到日场的人反馈可以站call没人管，皆大欢喜。我是夜场7点到9点的。自带的call棒没买周边（最近消费有丶多。姑且拍了一张纪念照……等我从手机传一下。</p><a id="more"></a>
+
+
+
+
+<p><img src="/2019/11/17/miku未来有你演唱会/IMG_20191116_183014.jpg" alt="IMG_20191116_183014"> </p>
+<p>希望有生之年能去看一场魔法未来……或者fS的infinite synthesis……不知南酱还能不能等到我……</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
     <title>检测识别问题中的metrics</title>
     <url>/2019/11/14/%E6%A3%80%E6%B5%8B%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%E4%B8%AD%E7%9A%84metrics/</url>
     <content><![CDATA[<p>之前一直记不熟各种指标的具体计算，本文准备彻底搞定这个问题，涵盖目前遇到过的所有评价指标。</p><h1 id="TP，TN，FP，FN"><a href="#TP，TN，FP，FN" class="headerlink" title="TP，TN，FP，FN"></a>TP，TN，FP，FN</h1><a id="more"></a>
@@ -105,7 +120,7 @@ P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，�
     <url>/2019/10/24/%E5%8A%A0%E5%AF%86%E6%B5%8B%E8%AF%95/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="也许有一天我会给你钥匙，也许那一天永远不会到来" data-whm="ERROR">
   <div class="hbe-input-container">
-  <input type="password" id="hbePass" placeholder="我若敞开心扉，你是否有接受的勇气？" />
+  <input type="password" id="hbePass" placeholder="我若敞开心扉，你是否有接受的勇气？">
     <label for="hbePass">我若敞开心扉，你是否有接受的勇气？</label>
     <div class="bottom-line"></div>
   </div>
