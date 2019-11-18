@@ -412,7 +412,7 @@ P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，�
   <entry>
     <title>深度学习图像detector相关论文整理</title>
     <url>/2019/09/15/detector-papers/</url>
-    <content><![CDATA[<p>包含r-cnn系列，ssd，yolo系列。</p><p>r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。</p><a id="more"></a>
+    <content><![CDATA[<p>包含r-cnn系列，yolo系列。</p><p>r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn（这个就暂时不研究了）以及基于focal loss的1阶检测器retinanet。</p><a id="more"></a>
 
 <p>yolo系列，包含yolov1，yolov2，yolov3。</p>
 <h1 id="yolo系列"><a href="#yolo系列" class="headerlink" title="yolo系列"></a>yolo系列</h1><h2 id="yolov1"><a href="#yolov1" class="headerlink" title="yolov1"></a>yolov1</h2><h3 id="模型输出的概率建模"><a href="#模型输出的概率建模" class="headerlink" title="模型输出的概率建模"></a>模型输出的概率建模</h3><p>图片首先被分割为S*S的网格（grid cell）。如果一个bbox的中心落在一个网格里，则该网格负责检测该物体。（对于pascal数据集，S定为7）</p>
