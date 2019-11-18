@@ -62,10 +62,13 @@
 <meta property="og:site_name" content="Accio_">
 <meta property="og:description" content="包含r-cnn系列，ssd，yolo系列。r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-14T06:46:57.535Z">
+<meta property="og:image" content="https://accioy.github.io/2019/09/15/detector-papers/yan/OneDrive/文献/rcnn/untitled.svg">
+<meta property="og:image" content="https://accioy.github.io/2019/09/15/detector-papers/yan/OneDrive/文献/rcnn/focalloss.svg">
+<meta property="og:updated_time" content="2019-11-18T07:54:02.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习图像detector相关论文整理">
 <meta name="twitter:description" content="包含r-cnn系列，ssd，yolo系列。r-cnn系列主要为二阶检测器，包含r-cnn，fast r-cnn，faster r-cnn，以及两个分支，用于实例分割的mask r-cnn以及基于focal loss的1阶检测器retinanet。">
+<meta name="twitter:image" content="https://accioy.github.io/2019/09/15/detector-papers/yan/OneDrive/文献/rcnn/untitled.svg">
   <link rel="canonical" href="https://accioy.github.io/2019/09/15/detector-papers/">
 
 
@@ -307,7 +310,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-14 14:46:57" itemprop="dateModified" datetime="2019-11-14T14:46:57+08:00">2019-11-14</time>
+                <time title="修改时间：2019-11-18 15:54:02" itemprop="dateModified" datetime="2019-11-18T15:54:02+08:00">2019-11-18</time>
               </span>
             
           
@@ -438,7 +441,89 @@ d(\text { box }, \text { centroid })=1-\operatorname{IOU}(\text { box, centroid 
 <h3 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h3><p>原文这次同样没有提到损失函数的具体公式，但根据上述内容不难看出，Yolov3相对于yolov2在损失函数上的变化主要为在分类中使用了逻辑回归和交叉熵损失。根据源码，公式应该如下：</p>
 <script type="math/tex; mode=display">
 \begin{array}{l}{\text { loss (object) }=\lambda_{\text {coord }} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{ij}^{obj}\left[\left(x_{i}-\hat{x}_{i}\right)^{2}+\left(y_{i}-\hat{y}_{i}\right)^{2}\right]+} \\ {\quad \lambda_{\text {coord}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{j}^{o b j}\left(2-w_{i} \times h_{i}\right)\left[\left(w_{i}-\hat{w}_{i}\right)^{2}+\left(h_{i}-\hat{h}_{i}\right)^{2}\right]-} \\ {\sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{obj}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]-} \\ {\quad \quad \lambda_{\text {noobj}} \sum_{i=0}^{K \times K} \sum_{j=0}^{M} I_{i j}^{\text {noobj}}\left[\hat{C}_{i} \log \left(C_{i}\right)+\left(1-\hat{C}_{i}\right) \log \left(1-C_{i}\right)\right]} \\ {\sum_{i=0}^{K \times K} I_{i j}^{o b j} \sum_{c \in \text { classes }}\left[\hat{p}_{i}(c) \log \left(p_{i}(c)\right)+\left(1-\hat{p}_{i}(c)\right) \log \left(1-p_{i}(c)\right)\right]}\end{array}</script><p>对于无obj的情况，仅计算置信度，不同于之前的L2，此处采用交叉熵作为置信度的损失函数。同理在有obj的情况，置信度和分类概率都采用交叉熵。对于有无obj的判断原理同之前，只是门限被改至0.5。同样，在每个网格仅有一个anchor即IOU最高的anchor被赋予真值，其余的不参与计算。</p>
-<h1 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h1><p>待填坑。</p>
+<h1 id="R-CNN系列"><a href="#R-CNN系列" class="headerlink" title="R-CNN系列"></a>R-CNN系列</h1><h2 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h2><p>本文发表于2014年。</p>
+<h3 id="背景及整体框架"><a href="#背景及整体框架" class="headerlink" title="背景及整体框架"></a>背景及整体框架</h3><p>背景：将CNN在图像分类领域的成功（2012年）应用于目标检测上面。检测问题：一种方式是使用滑窗检测器，即CNN。在当时，在整幅图像上做滑窗检测有技术难题，因此没有采用。而是使用了一种叫recognition using region的模型，在之前被证明有效。在测试阶段，会从图像提取约2000个候选框，并使用CNN进行特征提取，使用afﬁne image warping技术使得CNN的输入维度无视region形状固定，从而使得输出固定，然后使用支持向量机（SVM）进行分类。</p>
+<p>另一个问题：在当时，有目标位置标签的数据集还不够多。作者使用无监督学习进行预训练，然后用有监督学习进行fine tune。使用了非极大值抑制筛选（NMS），使用了bounding-box regression算法，并分析证明这个算法在模型中很关键。</p>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>综上，整个模型分为三个部分，第一部分生成候选区域，第二部分为CNN用于从每个候选区域提取一个固定维度的特征向量，第三部分是一个SVM用于分类。</p>
+<h4 id="区域建议"><a href="#区域建议" class="headerlink" title="区域建议"></a>区域建议</h4><p>已有很多方法，本文采用的是一种叫selective search的方法。原文没有对该方法进行描述仅给出了相关参考文献。我觉得现在深度学习模型也不用这些东西了，所以就不对它们进行研究了。</p>
+<h4 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h4><p>不论候选区域的形状大小，一律放缩变形至227×227，CNN有5个卷积层2个全连接层，最终输出为一个4096的向量。</p>
+<h3 id="预测-1"><a href="#预测-1" class="headerlink" title="预测"></a>预测</h3><p>预测流程：对图片进行selective search，提取出大约2000个区域，每个变形后输入CNN，提取出特征向量，然后用SVM打分，每一个类别都训练了一个SVM。然后使用NMS筛选，对一堆互相之间IOU超过门限的候选框仅保留最大得分的框。</p>
+<p><strong>特别注意：NMS筛选是基于每个类别独立筛选的！这样做的好处在于可以处理重叠（遮挡）的情况，但问题（我实际碰到的）是，如果数据集中有两种或多种较为相似的目标，而得分门限设置又不高的情况下，可能会出现多个IOU极高的检测结果。</strong></p>
+<h3 id="训练-2"><a href="#训练-2" class="headerlink" title="训练"></a>训练</h3><p>CNN进行了分类预训练。然后用候选区域进行了分类训练。注意背景也被当作一个类别加入，在候选区域与真值IOU大于0.5的时候被当作正样本，否则为负样本。为了避免不均衡问题，正负样本比例被控制在1:3。</p>
+<p>对SVM二分类器的训练，正负样本的定义有所不同，ground truth为正样本，对于负样本的定义，经过IOU上的搜索，门限被定为0.3，即0.3以下被当作负样本。对原数据集的每一个类别训练了一个二分类的SVM。</p>
+<p>总的来说，R-CNN训练分为三步，首先基于selective search的建议区域训练CNN分类，然后基于CNN的特征训练SVM分类，然后基于CNN的特征训练bounding box regression。</p>
+<h3 id="可视化分析与结构分析"><a href="#可视化分析与结构分析" class="headerlink" title="可视化分析与结构分析"></a>可视化分析与结构分析</h3><p>R-CNN提到了一些可视化分析方法的参考文献，以后有时间可以看一看。</p>
+<p>本文里用的方法是，使用大量的建议区域作为网络输入，检查特定单元的激活程度，按照激活程度对建议区域进行排序，并使用NMS筛选。</p>
+<p>结构分析发现，在没有fine tune的情况下，移除掉最后两层FC层并没有降低多少mAP，尽管这两层占用了大多数的参数量，CNN的power主要来自于其卷积层。在有fine tune的情况下，最后两层FC层带来的精度提升明显。</p>
+<p>CNN结构选择对精度影响明显。</p>
+<p>另外，BBox regression是在DPM里提出的，在本文也用于定位。对于一个selective search的区域，使用CNN的特征（移除最后两个FC）训练一个线性回归器，来预测一个新的检测窗。</p>
+<p>原文还提到了语义分割方面的迁移应用，不做仔细研究。</p>
+<h3 id="附：关于Bounding-box-regression"><a href="#附：关于Bounding-box-regression" class="headerlink" title="附：关于Bounding-box regression"></a>附：关于Bounding-box regression</h3><p>输入：两组box坐标（中心xy和长宽wh），一组为ground truth，记作G，另一组为（前一阶段的）建议值，记作P。该算法的目标是学习一个变形，可以将P变换至G。</p>
+<p>对于神经网络来说，首先对输入经过特征提取，然后输出结果。这个过程可以抽象为一组函数，记作d(P)。在这里，原文令：</p>
+<script type="math/tex; mode=display">
+d_{\star}(P)=\mathbf{w}_{\star}^{\mathrm{T}} \boldsymbol{\phi}_{5}(P)</script><p>其中Φ(P)是神经网络最后一层输出，经过一个线性函数变换得到d(P)。此处这个线性函数我觉得主要是为了进行维度上的变换，将神经网络的输出压缩至一个4×1的向量，另一方面应该是神经网络在上文中主要承担分类方面的特征提取，因此对于位置修正，这里需要额外的参数来训练。对于这些参数的训练方法为普通的L2 loss加正则项：</p>
+<script type="math/tex; mode=display">
+\mathbf{w}_{\star}=\underset{\hat{\mathbf{w}}_{\star}}{\operatorname{argmin}} \sum_{i}^{N}\left(t_{\star}^{i}-\hat{\mathbf{w}}_{\star}^{\mathrm{T}} \boldsymbol{\phi}_{5}\left(P^{i}\right)\right)^{2}+\lambda\left\|\hat{\mathbf{w}}_{\star}\right\|^{2}</script><p>即令d(P)向t<em>（真实的变换）回归。t\</em>的定义为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} t_{x} &=\left(G_{x}-P_{x}\right) / P_{w} \\ t_{y} &=\left(G_{y}-P_{y}\right) / P_{h} \\ t_{w} &=\log \left(G_{w} / P_{w}\right) \\ t_{h} &=\log \left(G_{h} / P_{h}\right) \end{aligned}</script><p>这样定义的原因是：我们需要定义一个变形方式，这个变形方式进行“变换的程度“应当只与P和G的偏移量有关，而与box本身的尺寸形状无关。因此使用上述方式计算偏移的相对量。</p>
+<p>根据上式，原始建议区域P经过上述模型的特征提取后输出d(P)，计算修正后的box的公式如下，即对上式进行逆变换：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} \hat{G}_{x} &=P_{w} d_{x}(P)+P_{x} \\ \hat{G}_{y} &=P_{h} d_{y}(P)+P_{y} \\ \hat{G}_{w} &=P_{w} \exp \left(d_{w}(P)\right) \\ \hat{G}_{h} &=P_{h} \exp \left(d_{h}(P)\right) \end{aligned}</script><p>原文强调了两个注意点：一是优化函数中的正则项很重要，二是如果P和G相差太多，则该算法没有意义。为了保证第二点，事先计算P与G的IOU，大于门限（原文取0.6）才进行上述回归计算。</p>
+<h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h2><p>本文发表于2015年。</p>
+<p>R-CNN的缺点：计算慢，训练繁琐，由于多步训练特征要被写入硬盘，消耗资源多。它对每一个建议区域都要单独计算。</p>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>R-CNN从整幅原始图像提取特征。</p>
+<p>对于每一个建议区域，使用ROI池化层从特征图中提取一个固定长的特征向量。</p>
+<p>每一个特征向量被喂进一系列FC层中，然后传到两个输出层：一个输出softmax分类概率，注意背景也被当作一个类别在其中；另一个输出bounding box回归的4个参数。</p>
+<p>ROI池化层：使用最大池化，将任意感兴趣区域的特征转化为一小块有着固定分辨率（H×W）的特征图。方法为将原区域分割为H×W的小块，每一小块进行最大池化，不同通道独立进行。</p>
+<p>注：region of interest (RoI)感兴趣区域</p>
+<p>综上，整个模型的输入为原始图像以及该图像的感兴趣区域列表，感兴趣区域仍然来着selective search，数量仍然大约为2000，输出为类别分类（包括背景）以及bbox回归值。</p>
+<h3 id="多任务损失函数"><a href="#多任务损失函数" class="headerlink" title="多任务损失函数"></a>多任务损失函数</h3><script type="math/tex; mode=display">
+L\left(p, u, t^{u}, v\right)=L_{\mathrm{cls}}(p, u)+\lambda[u \geq 1] L_{\mathrm{loc}}\left(t^{u}, v\right)</script><p>其中第一项为分类损失，采用普通的softmax交叉熵损失，公式如下：</p>
+<script type="math/tex; mode=display">
+L_{\mathrm{cls}}(p, u)=-\log p_{u}</script><p>其中p为预测概率，u为真实类别。再次注意此处分类包含背景类。</p>
+<p>第二项为bounding box regression损失，其中v是bbox回归的目标值，t^u为预测值。[u≥1]代表进对与真值box匹配了的box做计算，即对于背景，u=0。λ为损失的权重，原文中取1。</p>
+<p>对于bbox回归：</p>
+<script type="math/tex; mode=display">
+L_{\mathrm{loc}}\left(t^{u}, v\right)=\sum_{i \in\{x, y, w, h\}} \operatorname{smooth}_{L_{1}}\left(t_{i}^{u}-v_{i}\right)</script><p>其中：</p>
+<script type="math/tex; mode=display">
+\operatorname{smooth}_{L_{1}}(x)=\left\{\begin{array}{ll}{0.5 x^{2}} & {\text { if }|x|<1} \\ {|x|-0.5} & {\text { otherwise }}\end{array}\right.</script><p>相对于R-CNN中采用的L2 loss，作者认为该loss更加稳定。</p>
+<p><img src="/2019/09/15/detector-papers/yan\OneDrive\文献\rcnn\untitled.svg" alt="untitled"> </p>
+<p>在本文中，采用IOU大于0.5的预选框进行回归计算。IOU在0.1到0.5之间的被当作背景。</p>
+<h3 id="其它技巧与结论"><a href="#其它技巧与结论" class="headerlink" title="其它技巧与结论"></a>其它技巧与结论</h3><p>由于ROI池化层结构特殊，原文提到了其反向传播的计算，此处不做深入研究。</p>
+<p>探索了两种方法使模型对尺度鲁棒，brute force和 image pyramids。</p>
+<p>输出同样进行了NMS筛选，<strong>并且仍然是每个类别独立筛选</strong>。</p>
+<p>可以使用truncated SVD对FC层的计算进行加速。</p>
+<p>作者证明了多任务系统训练的有效性（因为共享特征表述）。</p>
+<p>多尺度训练对精度提升几乎没有效果。softmax分类略优于SVM。</p>
+<h2 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h2><p>本文发表于2016年。</p>
+<p>提出了 Region Proposal Network (RPN) （区域建议网络）来替代之前的selective search。实现真正由神经网络完成的端到端的目标检测识别。Selective search运算已经成为之前检查系统的速度瓶颈。</p>
+<p>提出anchor boxes的机制。</p>
+<h3 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h3><p>区域建议网络是一个全卷积网络，因此可以接收任何尺寸的图片作为输入，输出若干建议区域及其score。</p>
+<p>首先基于原图由CNN提取特征。然后在特征图上进行n×n的滑窗（原文取n=3），并输入到两个FC层中，一个用于 box-regression 另一个用于分类。两个FC层对全图参数共享，因此实际实现上，结构为在原特征图上进行n×n卷积，然后接入两个并行的1×1卷积。</p>
+<h4 id="anchors"><a href="#anchors" class="headerlink" title="anchors"></a>anchors</h4><p>对于滑窗，每一个位置预测k个框。因此box regression输出维度为4k，分类输出维度为2k，注意此时的分类仅仅针对objectness，即仅区分含有目标或者是背景，不进行具体的识别分类。对于位置预测，要进行BBox回归，需要有先验box，此处在每个位置定了9个先验box，3种大小和3种长宽比。即k=9。若特征图大小为W×H，则共有W×H×k个先验框。这样的方式保证了平移不变性。</p>
+<h4 id="RPN的损失函数"><a href="#RPN的损失函数" class="headerlink" title="RPN的损失函数"></a>RPN的损失函数</h4><p>由上述可知，RPN的损失包含两项，分别为box回归损失和二分类损失。对于anchor boxes样本的正负判定，条件为：选取与真值IOU大于0.7的box为正样本，或者选取IOU最高的box为正样本。第二条是为了保证正样本一直存在，通常第一条已经足够。注意，一个真值可能匹配到多个先验anchor boxes；与任何真值IOU小于0.3的anchor boxes被定为负样本（即背景）；其余的anchor boxes不参与训练。</p>
+<p>该结构还有一个巧妙之处在于，对于不同尺寸和长宽比的先验anchor boxes，计算回归的权重是不共享的。</p>
+<p>综上，损失函数如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} L\left(\left\{p_{i}\right\},\left\{t_{i}\right\}\right)=& \frac{1}{N_{c l s}} \sum_{i} L_{c l s}\left(p_{i}, p_{i}^{*}\right) \\+\lambda & \frac{1}{N_{r e g}} \sum_{i} p_{i}^{*} L_{r e g}\left(t_{i}, t_{i}^{*}\right) \end{aligned}</script><p>对于正样本，p<em>=1，对于负样本，p\</em>=0。分类loss采用交叉熵，回归算法仍然采用bounding box regression，loss和之前的模型一样采用smoothL1。权重λ原文设为10，并提到模型对该参数在很大范围内并不敏感。</p>
+<p>训练时，控制正负样本比例在1:1。</p>
+<h3 id="整体模型的训练"><a href="#整体模型的训练" class="headerlink" title="整体模型的训练"></a>整体模型的训练</h3><p>由于RPN和后面的检测模型fast r-cnn的特征提取是共享的，因此需要特别的训练方法。</p>
+<p>首先训练RPN，然后使用RPN的建议区域训练fast r-cnn，然后使用fast r-cnn的参数初始化共享的特征提取器fine tuneRPN独有部分，最后保持特征提取器固定fine tune fast r-cnn独有的部分。</p>
+<p>RPN的输出经过NMS和top-k筛选。</p>
+<p>细节：超出图片范围的anchor不参与训练。</p>
+<h2 id="Retinanet"><a href="#Retinanet" class="headerlink" title="Retinanet"></a>Retinanet</h2><p>这篇文章的模型架构其实已经比较脱离了r-cnn系列的范畴，但和前几篇一样都是Facebook AI研究院的作品，思想上有很多共同的地方。本文发表于2018年，在yolov3之前。</p>
+<p>背景：检测器模型有单阶和双阶的。此前的r-cnn系列都是双阶的，即先提取建议区域，然后进行精细化的坐标和类别预测。单阶检测器直接在原始图像上进行目标的检测识别。此前双阶检测器精度要优于单阶检测器。本文认为其原因主要在于正负样本的不均衡问题，显然多数情况下目标区域仅占整幅图像的一小部分，即单阶检测器难免遇到大量样本都是负样本（背景），少数样本是正样本（目标）。本文从损失函数的构造上解决了这个问题。</p>
+<h3 id="focal-loss"><a href="#focal-loss" class="headerlink" title="focal loss"></a>focal loss</h3><p>本文针对样本不均衡问题提出一个新的损失函数，称为focal loss：</p>
+<script type="math/tex; mode=display">
+\mathrm{FL}\left(p_{\mathrm{t}}\right)=-\alpha_{\mathrm{t}}\left(1-p_{\mathrm{t}}\right)^{\gamma} \log \left(p_{\mathrm{t}}\right)</script><p>其中：</p>
+<script type="math/tex; mode=display">
+p_{\mathrm{t}}=\left\{\begin{array}{ll}{p} & {\text { if } y=1} \\ {1-p} & {\text { otherwise }}\end{array}\right.</script><p>作为对比，传统分类的交叉熵损失函数为：</p>
+<script type="math/tex; mode=display">
+\mathrm{CE}(p, y)=\mathrm{CE}\left(p_{\mathrm{t}}\right)=-\log \left(p_{\mathrm{t}}\right)</script><p>显然，本文提出的损失函数多了两项系数。</p>
+<p><img src="/2019/09/15/detector-papers/yan\OneDrive\文献\rcnn\focalloss.svg" alt="focalloss"></p>
+<p>y ∈{1,-1}，代表样本为正样本或负样本。P∈[0,1]为神经网络预测认为该样本属于正样本的概率。对于神经网络计算的pt值较大的样本（如例如大于0.7），可以认为网络对于该样本的分类有着较高的置信度，此类样本对于网络模型来说较容易分类，因此对模型的训练实际意义较小。而pt值较小的样本对训练意义更大，尤其是pt值小于0.5的样本（代表网络没能对其进行正确分类）。而从上图可以看出（即γ=0的曲线），传统的交叉熵损失函数在pt值较大时仍然有着不小的损失值，而此类“容易分类”的样本往往占据全部样本的多数，因此会更多地影响训练时梯度下降的方向，使网络无法集中学习“更难分类”的样本特征以提高分类精确度。另外，由于所有样本对损失函数的贡献度完全相同，当负样本数远大于正样本数时，损失函数面临同样的问题，即无法有效从少量的正样本中学习分类特征。由上所述，传统的交叉熵分类方法面临两个问题，一是正负样本不均衡所导致的网络模型难以有效学习目标特征的问题，二是“难易”样本不均衡导致的不能有效对少量困难样本特征进行学习的问题。</p>
+<p>改进后focal loss公式的核心在于对样本进行加权，使不同样本对损失函数的贡献不同。相比传统的交叉熵损失函数，该损失函数添加了两项加权系数。αt与pt的定义类似，正样本取α，负样本取1-α，α∈ [0,1]可以作为网络的超参数，通常与正样本出现频率反相关，即正样本出现频率越低，对损失函数贡献加权越高，相应地负样本加权越低。(1-pt)^γ项可以根据样本分类难度进行加权。由前所述，  值高的样本属于容易分类的样本，对应的该项加权系数越低，pt值低的样本属于更难分类的样本，因此加权系数更高，对损失函数的贡献也更高，因此训练过程中，在权重参数更新时，受到该样本的影响更大。γ作为神经网络模型的超参数，可以调节该项系数对损失函数的影响大小。上图为αt取1时不同γ下损失函数曲线。在训练过程中，实际使用的γ取值为2，α=0.25。  </p>
+<h3 id="模型架构"><a href="#模型架构" class="headerlink" title="模型架构"></a>模型架构</h3><p>模型架构方面，特征提取器使用了更加先进的 Feature Pyramid Network，基本结构基于resnet。提取了5层不同尺度的特征图，每层特征图上使用绝对大小相同的anchor，对应到原图上即5种尺寸的感受野。基于特征图，使用了两个全卷积的子网络，一个用于输出分类，另一个用于输出anchor到真值的Bbox回归参数。其他方面，IOU门限同之前一样选取双门限，分别为0.1和0.5。0.5以上被标记为正样本，0.1以下为负样本。</p>
 
     </div>
 
@@ -519,7 +604,7 @@ d(\text { box }, \text { centroid })=1-\operatorname{IOU}(\text { box, centroid 
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yolo系列"><span class="nav-text">yolo系列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov1"><span class="nav-text">yolov1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型输出的概率建模"><span class="nav-text">模型输出的概率建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络架构"><span class="nav-text">网络架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测"><span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局限性"><span class="nav-text">局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对比"><span class="nav-text">对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov2"><span class="nav-text">yolov2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进"><span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练-1"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov3"><span class="nav-text">yolov3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进-1"><span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数-1"><span class="nav-text">损失函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#R-CNN系列"><span class="nav-text">R-CNN系列</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yolo系列"><span class="nav-text">yolo系列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov1"><span class="nav-text">yolov1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型输出的概率建模"><span class="nav-text">模型输出的概率建模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络架构"><span class="nav-text">网络架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测"><span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局限性"><span class="nav-text">局限性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对比"><span class="nav-text">对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov2"><span class="nav-text">yolov2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进"><span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练-1"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yolov3"><span class="nav-text">yolov3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改进-1"><span class="nav-text">改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数-1"><span class="nav-text">损失函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#R-CNN系列"><span class="nav-text">R-CNN系列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#R-CNN"><span class="nav-text">R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景及整体框架"><span class="nav-text">背景及整体框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-text">模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区域建议"><span class="nav-text">区域建议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征提取"><span class="nav-text">特征提取</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测-1"><span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练-2"><span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化分析与结构分析"><span class="nav-text">可视化分析与结构分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附：关于Bounding-box-regression"><span class="nav-text">附：关于Bounding-box regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-text">Fast R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构"><span class="nav-text">架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多任务损失函数"><span class="nav-text">多任务损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它技巧与结论"><span class="nav-text">其它技巧与结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-text">Faster R-CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RPN"><span class="nav-text">RPN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#anchors"><span class="nav-text">anchors</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RPN的损失函数"><span class="nav-text">RPN的损失函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整体模型的训练"><span class="nav-text">整体模型的训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Retinanet"><span class="nav-text">Retinanet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#focal-loss"><span class="nav-text">focal loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型架构"><span class="nav-text">模型架构</span></a></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
