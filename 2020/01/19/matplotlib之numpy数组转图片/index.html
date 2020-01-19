@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
+  <meta name="description" content="最近用matplotlib遇到了一些坑，记录一下。图片转数组12345678import matplotlib.pyplot as pltim_file=&apos;test_image.jpg&apos;img=plt.imread(im_file)print(img.shape)print(img.dtype)# img: numpy array with shape （H，W，c）# uint8">
 <meta property="og:type" content="article">
-<meta property="og:title" content="乱七八糟的坑以及没什么卯月的知识">
-<meta property="og:url" content="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/index.html">
+<meta property="og:title" content="matplotlib之numpy数组转图片">
+<meta property="og:url" content="https://accioy.github.io/2020/01/19/matplotlib之numpy数组转图片/index.html">
 <meta property="og:site_name" content="Accio_">
-<meta property="og:description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
+<meta property="og:description" content="最近用matplotlib遇到了一些坑，记录一下。图片转数组12345678import matplotlib.pyplot as pltim_file=&apos;test_image.jpg&apos;img=plt.imread(im_file)print(img.shape)print(img.dtype)# img: numpy array with shape （H，W，c）# uint8">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-22T12:02:04.000Z">
+<meta property="og:updated_time" content="2020-01-19T11:56:25.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="乱七八糟的坑以及没什么卯月的知识">
-<meta name="twitter:description" content="nv docker要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。">
-  <link rel="canonical" href="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/">
+<meta name="twitter:title" content="matplotlib之numpy数组转图片">
+<meta name="twitter:description" content="最近用matplotlib遇到了一些坑，记录一下。图片转数组12345678import matplotlib.pyplot as pltim_file=&apos;test_image.jpg&apos;img=plt.imread(im_file)print(img.shape)print(img.dtype)# img: numpy array with shape （H，W，c）# uint8">
+  <link rel="canonical" href="https://accioy.github.io/2020/01/19/matplotlib之numpy数组转图片/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>乱七八糟的坑以及没什么卯月的知识 | Accio_</title>
+  <title>matplotlib之numpy数组转图片 | Accio_</title>
   
 
 
@@ -268,7 +268,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://accioy.github.io/2019/09/22/乱七八糟的坑以及没什么卯月的知识/">
+    <link itemprop="mainEntityOfPage" href="https://accioy.github.io/2020/01/19/matplotlib之numpy数组转图片/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -280,7 +280,7 @@
       <meta itemprop="name" content="Accio_">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">乱七八糟的坑以及没什么卯月的知识
+        <h1 class="post-title" itemprop="name headline">matplotlib之numpy数组转图片
 
           
         </h1>
@@ -296,7 +296,7 @@
                 
               
 
-              <time title="创建时间：2019-09-22 20:01:22 / 修改时间：20:02:04" itemprop="dateCreated datePublished" datetime="2019-09-22T20:01:22+08:00">2019-09-22</time>
+              <time title="创建时间：2020-01-19 19:24:17 / 修改时间：19:56:25" itemprop="dateCreated datePublished" datetime="2020-01-19T19:24:17+08:00">2020-01-19</time>
             </span>
           
             
@@ -318,7 +318,7 @@
           
 
           
-            <span id="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/" class="post-meta-item leancloud_visitors" data-flag-title="乱七八糟的坑以及没什么卯月的知识" title="阅读次数">
+            <span id="/2020/01/19/matplotlib之numpy数组转图片/" class="post-meta-item leancloud_visitors" data-flag-title="matplotlib之numpy数组转图片" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -336,7 +336,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/22/乱七八糟的坑以及没什么卯月的知识/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2020/01/19/matplotlib之numpy数组转图片/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/19/matplotlib之numpy数组转图片/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -350,72 +350,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
-<p><del>依赖：查了nv-docker的github issue，感觉貌似是容器包含cuda，依赖主机的显卡驱动。</del></p>
-<p>没错就是这样，<a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements</a></p>
-<p>根据这个wiki说明，cuda的镜像启动需要依赖显卡驱动，并且根据镜像内的cuda版本对显卡驱动版本有要求，具体版本对应要求见上述链接。</p>
-<p>因此容器的cuda对主机的显卡驱动有要求，如果不兼容，要么改主机的显卡驱动版本（没有root不能，而且也没查到非root装显卡驱动的方法，要么就尝试更换与当前主机显卡驱动版本兼容的cuda镜像。</p>
-<p><del>但目前我用dnndk这种冷门的东西，我又不想自己建一个镜像把xilinx的那些东西自己装一遍，因此尝试更改镜像内cuda版本看看。</del></p>
-<p>上述尝试失败，和狗管理沟通准备升级显卡驱动，考虑到cuda可以同时装多个版本，并且新版显卡驱动对旧版cuda兼容（如果nv的那个对照表没写错的话），但愿以前的环境不要出现兼容问题。</p>
-<h1 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h1><h2 id="关于root密码"><a href="#关于root密码" class="headerlink" title="关于root密码"></a>关于root密码</h2><p>是随机的，输入passwd更改，对于ssh，root默认不能远程登录，需要修改配置文件（见ssh章节</p>
-<h2 id="关于包"><a href="#关于包" class="headerlink" title="关于包"></a>关于包</h2><p>首先apt-get update更新源，之后才能安装新东西</p>
-<p>然后apt-get upgrade更新所有包</p>
-<p><strong>包相关命令：</strong></p>
-<p>清除无用包：<strong>apt-get clean &amp;&amp; apt-get autoclean</strong> 　　#一般用<strong>apt-get autoclean</strong>就够了</p>
-<p>更新源：<strong>apt-get update</strong>　　　　#同步 /etc/apt/sources.list 源的索引，这样才知道是不是有最新的包</p>
-<p>更新包：<strong>apt-get upgrade</strong>　　　#更新所有已安装的软件（upgrade只是简单的更新包，不管这些依赖，它不添不删。）</p>
-<p>更新包2：apt-get dist-upgrade　#包与包之间存在各种依赖关系。而dist-upgrade可以根据依赖关系的变化添删包。（<strong>依赖有时会出错，建议新手谨慎使用</strong>）</p>
-<p>补充：在执行 <strong>upgrade</strong> or <strong>dist-upgrade</strong> 之前一定要执行 <strong>update</strong>, 这样才能获取最新</p>
-<p>安装软件：apt-get install XXX [—reinstall]　#<strong>—reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
-<p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖（安装搜狗拼音实例有用到）</p>
-<p>删除软件：apt-get remove XXX [—purge]　#—purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX —purge</strong></p>
-<p>-————————————————————————————————————————————————————————————————————————————</p>
-<p>其他命令：(特殊环境下使用)</p>
-<p>搜索软件：apt-get search xxx</p>
-<p>检查是否有损坏的依赖：apt-get check　　　（偶尔想起来或者软件打不开的时候使用【有时候被清理了】）</p>
-<p>获取包信息：apt-cache show xxx</p>
-<p>有哪些依赖：apt-cache depends xxx　　　 （比如安装一个包，修复依赖也失败，那就看看有哪些依赖，自己手动安装）</p>
-<p>被哪些包依赖：apt-cache rdepends xxx　　（比如卸载一个包的时候，查一下被哪些包依赖）</p>
-<p>下载该包源代码：apt-get source xxx</p>
-<p>安装相关编译环境：apt-get build-dep xxx</p>
-<h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><p>df -h查看硬盘情况</p>
-<p>du 目录查看目录大小，-m以MB为单位</p>
-<p>nvidia-smi 查看gpu使用情况</p>
-<p>tar -zxvf java.tar.gz  -C /usr/java 解压到目标路径</p>
-<p>jobs查看后台列表，但只能查看当前终端的</p>
-<p>bg，fg前后切换</p>
-<p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里</p>
-<p>命令后加 &amp;后台运行</p>
-<p>正在运行时ctrl+z切后台</p>
-<p>ps -ef可查看全部后台，|grep <em>*</em>可以查找</p>
-<p>ctrl+s暂停终端变化，ctrl+q继续（好像是吧</p>
-<p>ls -lR|grep “^-“|wc -l<br>查看某文件夹下文件夹的个数，包括子文件夹里的。</p>
-<p>复制文件夹：cp xxx /www/wwwroot -r</p>
-<p>rsync同步文件，一般-avP即可</p>
-<h1 id="ssh服务端"><a href="#ssh服务端" class="headerlink" title="ssh服务端"></a>ssh服务端</h1><p>apt-get install openssh-server</p>
-<p>启动：/etc/init.d/ssh start</p>
-<p>ps -e|grep ssh</p>
-<p>默认root不能远程登录，需要修改配置文件</p>
-<p>vim /etc/ssh/sshd_config</p>
-<p>vim搜索：/<em>*</em></p>
-<p>修改PermitRootLogin项，默认为without-password，修改为yes</p>
-<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>i插入，esc命令模式，:到尾部输入命令，w保存，q退出，!强制</p>
-<p>保存退出 ：:wq!</p>
-<p>不保存退出：:q!</p>
-<h1 id="mathtype公式显示不全"><a href="#mathtype公式显示不全" class="headerlink" title="mathtype公式显示不全"></a>mathtype公式显示不全</h1><p>调整word行距，不要设固定值，最好改成xx倍</p>
-<h1 id="有关random-shuffle函数的局限性"><a href="#有关random-shuffle函数的局限性" class="headerlink" title="有关random.shuffle函数的局限性"></a>有关random.shuffle函数的局限性</h1><p>刚刚踩的坑，记录一下，万一对别人有帮助呢。</p>
-<p>本文重点： random.shuffle千万不要用于二维numpy.array（也就是矩阵）!!!</p>
-<p><a href="https://blog.csdn.net/qq_21063873/article/details/80860218" target="_blank" rel="noopener">https://blog.csdn.net/qq_21063873/article/details/80860218</a></p>
-<h1 id="关于卡刷img"><a href="#关于卡刷img" class="headerlink" title="关于卡刷img"></a>关于卡刷img</h1><p>用balenaEtcher往SD卡里刷img的时候，空间越刷越小，格式化不能恢复，我qtmd，百度了一下解决方法：</p>
-<p><a href="https://blog.csdn.net/tz2101/article/details/55000309" target="_blank" rel="noopener">https://blog.csdn.net/tz2101/article/details/55000309</a></p>
-<p>有时候U盘做完系统盘安装后，发现U盘大小大幅度缩水，怎么恢复原大小。<br>步骤如下：<br>插入U盘；</p>
-<p>打开“运行”，输入cmd命令，然后输入diskpart，进入diskpart管理；<br>输入list disk，查看目前电脑的硬盘，然后输入select disk 3（原作者说一般是1反正我这里是3）（注意空格，名字是英文，list里显示的是中文还行）；<br>此时已选中U盘了，输入clean，清除U盘上的数据；<br>输入create partition primary ，即创建主分区，active 激活该分区，format quick搜索 快速格式化该分区。</p>
-<p>exit退出diskpart管理，exit退出cmd。此时你发现你的U盘恢复了原始大小。</p>
-<h2 id="linux命令行搭建shadowsocks代理"><a href="#linux命令行搭建shadowsocks代理" class="headerlink" title="linux命令行搭建shadowsocks代理"></a>linux命令行搭建shadowsocks代理</h2><p>问题在于弄好socks代理还要搞个https转socks，如果有gui的话弄好shadowsocks浏览器有插件可以解决。</p>
-<p>命令行情况下，<code>pip install shadowsocks</code>，然后sslocal命令。</p>
-<p>linux的shadowsocks服务端和客户端是一个包，服务端命令是ssserver。</p>
-<p>问题在于https转socks实现，需要第三方软件实现。</p>
-<h2 id="关于主机ping开发板等设备"><a href="#关于主机ping开发板等设备" class="headerlink" title="关于主机ping开发板等设备"></a>关于主机ping开发板等设备</h2><p>直连网线的话主机设静态ip并和开发板ip在同一区段内</p>
+        <p>最近用matplotlib遇到了一些坑，记录一下。</p><h1 id="图片转数组"><a href="#图片转数组" class="headerlink" title="图片转数组"></a>图片转数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">im_file=<span class="string">'test_image.jpg'</span></span><br><span class="line">img=plt.imread(im_file)</span><br><span class="line">print(img.shape)</span><br><span class="line">print(img.dtype)</span><br><span class="line"><span class="comment"># img: numpy array with shape （H，W，c）</span></span><br><span class="line"><span class="comment"># uint8</span></span><br></pre></td></tr></table></figure><a id="more"></a>
+
+<p>如上，类型是uint8的。</p>
+<h1 id="数组转图片"><a href="#数组转图片" class="headerlink" title="数组转图片"></a>数组转图片</h1><p>分为以下情况：3通道和单通道，浮点数组和整形数组。</p>
+<h2 id="通道，浮点数组"><a href="#通道，浮点数组" class="headerlink" title="通道，浮点数组"></a>通道，浮点数组</h2><p>三通道的shape是()</p>
+<p>对于这种情况，不论原数组取值范围是多少，默认按0-1范围处理，超出范围的直接进行<strong>clip操作</strong>。也就是小于0的数按0（纯黑色）处理，大于1的按1（纯白）处理。</p>
+<p>同时会给出警告：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Clipping input data to the valid range <span class="keyword">for</span> imshow with RGB data ([0..1] <span class="keyword">for</span> floats or [0..255] <span class="keyword">for</span> integers).</span><br></pre></td></tr></table></figure>
+<p>如果不加<code>cmap=&#39;gray&#39;</code>的话，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># float array, 3 channels</span></span><br><span class="line"><span class="comment"># For float array with 3 channels, by default the values out of range [0,1] are **Clipped** !</span></span><br><span class="line">x=np.ones([<span class="number">500</span>,<span class="number">600</span>,<span class="number">3</span>])</span><br><span class="line">x*=<span class="number">0.4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">200</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">9</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">250</span>,<span class="number">300</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">-2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">370</span>,<span class="number">400</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">0.7</span></span><br><span class="line">print(x.dtype)</span><br><span class="line">plt.imshow(x)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>暂时不贴图了，可以自己试一试效果。</p>
+<p>结果应该是灰色背景，从上到下依次是白、黑、浅灰三个横向条带。</p>
+<p>如果数组是真实rgb值，建议先归一化到0-1，即<code>x=x/255.</code>。</p>
+<h2 id="单通道，浮点数组"><a href="#单通道，浮点数组" class="headerlink" title="单通道，浮点数组"></a>单通道，浮点数组</h2><p>单通道的shape是二维的(H,W)，如果是(H,W,1)会报错。</p>
+<p>对于单通道数组，默认进行<strong>归一化</strong>，即原数组中最大值被映射到1，最小值被映射到0。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># float array, 1 channel</span></span><br><span class="line"><span class="comment"># For float array with 1 channels, by default all values are normalized</span></span><br><span class="line">x=np.ones([<span class="number">500</span>,<span class="number">600</span>])</span><br><span class="line">x*=<span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">200</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>])*<span class="number">200</span></span><br><span class="line">print(x.dtype)</span><br><span class="line">plt.imshow(x,cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>结果是黑色背景白色条带。</p>
+<p>使用<code>plt.imshow(x,cmap=&#39;gray&#39;, clim=(0,255))</code>，即将0作为黑色，将255作为白色处理。</p>
+<h2 id="三通道，整形"><a href="#三通道，整形" class="headerlink" title="三通道，整形"></a>三通道，整形</h2><p>默认会对超出0-255的部分进行<strong>clip处理</strong>。即小于0视为0（黑色），大于255视为255（白色）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int array, 3 channels</span></span><br><span class="line">x=np.ones([<span class="number">500</span>,<span class="number">600</span>,<span class="number">3</span>])</span><br><span class="line">x*=<span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">200</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">900</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">250</span>,<span class="number">300</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">-2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">370</span>,<span class="number">400</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">200</span></span><br><span class="line">x=x.astype(np.int64)</span><br><span class="line">print(x.dtype)</span><br><span class="line">plt.imshow(x)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="单通道，整形"><a href="#单通道，整形" class="headerlink" title="单通道，整形"></a>单通道，整形</h2><p>默认情况下，最小值映射到0（黑色），最大值映射到255（白色）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int array, 1 channel</span></span><br><span class="line"><span class="comment"># For int array, by default the array range is mapped to [0,255].</span></span><br><span class="line">x=np.ones([<span class="number">500</span>,<span class="number">600</span>])</span><br><span class="line">x*=<span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">200</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>])*<span class="number">175</span></span><br><span class="line">x=x.astype(np.int64)</span><br><span class="line">print(x)</span><br><span class="line">print(x.dtype)</span><br><span class="line">plt.imshow(x,cmap=<span class="string">'gray'</span>)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>同上，如果数组本身是真实灰度值，使用<code>plt.imshow(x,cmap=&#39;gray&#39;,clim=[0,255])</code>处理。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>matplotlib读取jpg图片时，默认是uint8类型的numpy数组。</p>
+<p>在将numpy数组转图片显示时，浮点形默认处理范围是0-1，整形默认处理范围是0-255。</p>
+<p>对于三通道数组，超出范围的进行clip处理，对于单通道数组，默认将数组范围线性映射到对应类型的处理范围。</p>
 
     </div>
 
@@ -432,8 +392,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/16/国奖/" rel="next" title="国奖">
-                  <i class="fa fa-chevron-left"></i> 国奖
+                <a href="/2020/01/09/0202年到了/" rel="next" title="0202年到了">
+                  <i class="fa fa-chevron-left"></i> 0202年到了
                 </a>
               
             </div>
@@ -441,10 +401,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/26/blog-update-log/" rel="prev" title="blog网站更新记录">
-                  blog网站更新记录 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -496,7 +452,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nv-docker"><span class="nav-text">nv docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟主机"><span class="nav-text">虚拟主机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于root密码"><span class="nav-text">关于root密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于包"><span class="nav-text">关于包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令"><span class="nav-text">linux命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh服务端"><span class="nav-text">ssh服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vim"><span class="nav-text">vim</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mathtype公式显示不全"><span class="nav-text">mathtype公式显示不全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有关random-shuffle函数的局限性"><span class="nav-text">有关random.shuffle函数的局限性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于卡刷img"><span class="nav-text">关于卡刷img</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux命令行搭建shadowsocks代理"><span class="nav-text">linux命令行搭建shadowsocks代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于主机ping开发板等设备"><span class="nav-text">关于主机ping开发板等设备</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片转数组"><span class="nav-text">图片转数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组转图片"><span class="nav-text">数组转图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通道，浮点数组"><span class="nav-text">通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，浮点数组"><span class="nav-text">单通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三通道，整形"><span class="nav-text">三通道，整形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，整形"><span class="nav-text">单通道，整形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
