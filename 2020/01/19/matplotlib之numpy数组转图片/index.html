@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Accio_">
 <meta property="og:description" content="最近用matplotlib遇到了一些坑，记录一下。图片转数组12345678import matplotlib.pyplot as pltim_file=&apos;test_image.jpg&apos;img=plt.imread(im_file)print(img.shape)print(img.dtype)# img: numpy array with shape （H，W，c）# uint8">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-19T11:56:25.058Z">
+<meta property="og:updated_time" content="2020-01-19T11:59:46.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib之numpy数组转图片">
 <meta name="twitter:description" content="最近用matplotlib遇到了一些坑，记录一下。图片转数组12345678import matplotlib.pyplot as pltim_file=&apos;test_image.jpg&apos;img=plt.imread(im_file)print(img.shape)print(img.dtype)# img: numpy array with shape （H，W，c）# uint8">
@@ -296,7 +296,7 @@
                 
               
 
-              <time title="创建时间：2020-01-19 19:24:17 / 修改时间：19:56:25" itemprop="dateCreated datePublished" datetime="2020-01-19T19:24:17+08:00">2020-01-19</time>
+              <time title="创建时间：2020-01-19 19:24:17 / 修改时间：19:59:46" itemprop="dateCreated datePublished" datetime="2020-01-19T19:24:17+08:00">2020-01-19</time>
             </span>
           
             
@@ -354,7 +354,7 @@
 
 <p>如上，类型是uint8的。</p>
 <h1 id="数组转图片"><a href="#数组转图片" class="headerlink" title="数组转图片"></a>数组转图片</h1><p>分为以下情况：3通道和单通道，浮点数组和整形数组。</p>
-<h2 id="通道，浮点数组"><a href="#通道，浮点数组" class="headerlink" title="通道，浮点数组"></a>通道，浮点数组</h2><p>三通道的shape是()</p>
+<h2 id="三通道，浮点数组"><a href="#三通道，浮点数组" class="headerlink" title="三通道，浮点数组"></a>三通道，浮点数组</h2><p>三通道的shape是(H，W，C)</p>
 <p>对于这种情况，不论原数组取值范围是多少，默认按0-1范围处理，超出范围的直接进行<strong>clip操作</strong>。也就是小于0的数按0（纯黑色）处理，大于1的按1（纯白）处理。</p>
 <p>同时会给出警告：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Clipping input data to the valid range <span class="keyword">for</span> imshow with RGB data ([0..1] <span class="keyword">for</span> floats or [0..255] <span class="keyword">for</span> integers).</span><br></pre></td></tr></table></figure>
@@ -452,7 +452,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片转数组"><span class="nav-text">图片转数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组转图片"><span class="nav-text">数组转图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通道，浮点数组"><span class="nav-text">通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，浮点数组"><span class="nav-text">单通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三通道，整形"><span class="nav-text">三通道，整形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，整形"><span class="nav-text">单通道，整形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图片转数组"><span class="nav-text">图片转数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组转图片"><span class="nav-text">数组转图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三通道，浮点数组"><span class="nav-text">三通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，浮点数组"><span class="nav-text">单通道，浮点数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三通道，整形"><span class="nav-text">三通道，整形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单通道，整形"><span class="nav-text">单通道，整形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

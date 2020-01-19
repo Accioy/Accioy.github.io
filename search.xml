@@ -7,7 +7,7 @@
 
 <p>如上，类型是uint8的。</p>
 <h1 id="数组转图片"><a href="#数组转图片" class="headerlink" title="数组转图片"></a>数组转图片</h1><p>分为以下情况：3通道和单通道，浮点数组和整形数组。</p>
-<h2 id="通道，浮点数组"><a href="#通道，浮点数组" class="headerlink" title="通道，浮点数组"></a>通道，浮点数组</h2><p>三通道的shape是()</p>
+<h2 id="三通道，浮点数组"><a href="#三通道，浮点数组" class="headerlink" title="三通道，浮点数组"></a>三通道，浮点数组</h2><p>三通道的shape是(H，W，C)</p>
 <p>对于这种情况，不论原数组取值范围是多少，默认按0-1范围处理，超出范围的直接进行<strong>clip操作</strong>。也就是小于0的数按0（纯黑色）处理，大于1的按1（纯白）处理。</p>
 <p>同时会给出警告：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Clipping input data to the valid range <span class="keyword">for</span> imshow with RGB data ([0..1] <span class="keyword">for</span> floats or [0..255] <span class="keyword">for</span> integers).</span><br></pre></td></tr></table></figure>
