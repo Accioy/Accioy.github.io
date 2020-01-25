@@ -11,7 +11,7 @@
 <p>对于这种情况，不论原数组取值范围是多少，默认按0-1范围处理，超出范围的直接进行<strong>clip操作</strong>。也就是小于0的数按0（纯黑色）处理，大于1的按1（纯白）处理。</p>
 <p>同时会给出警告：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Clipping input data to the valid range <span class="keyword">for</span> imshow with RGB data ([0..1] <span class="keyword">for</span> floats or [0..255] <span class="keyword">for</span> integers).</span><br></pre></td></tr></table></figure>
-<p>如果不加<code>cmap=&#39;gray&#39;</code>的话，</p>
+<p>如果不加<code>cmap=&#39;gray&#39;</code>的话，默认显示热度图。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># float array, 3 channels</span></span><br><span class="line"><span class="comment"># For float array with 3 channels, by default the values out of range [0,1] are **Clipped** !</span></span><br><span class="line">x=np.ones([<span class="number">500</span>,<span class="number">600</span>,<span class="number">3</span>])</span><br><span class="line">x*=<span class="number">0.4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">200</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">9</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">250</span>,<span class="number">300</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">-2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">370</span>,<span class="number">400</span>):</span><br><span class="line">    x[i]=np.ones([<span class="number">600</span>,<span class="number">3</span>])*<span class="number">0.7</span></span><br><span class="line">print(x.dtype)</span><br><span class="line">plt.imshow(x)</span><br><span class="line">plt.axis(<span class="string">'off'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>暂时不贴图了，可以自己试一试效果。</p>
 <p>结果应该是灰色背景，从上到下依次是白、黑、浅灰三个横向条带。</p>
@@ -872,6 +872,18 @@ p_{\mathrm{t}}=\left\{\begin{array}{ll}{p} & {\text { if } y=1} \\ {1-p} & {\tex
       </categories>
   </entry>
   <entry>
+    <title>wei,zaima</title>
+    <url>/2019/09/08/hello-world/</url>
+    <content><![CDATA[<p>buzai, cmn</p>
+<h1 id="还行"><a href="#还行" class="headerlink" title="还行"></a>还行</h1><p>我佛了</p>
+<h1 id="真的吗"><a href="#真的吗" class="headerlink" title="真的吗"></a>真的吗</h1><p>神秘。</p>
+<h1 id="激霸"><a href="#激霸" class="headerlink" title="激霸"></a>激霸</h1><p>看到这的建议请客</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
+  </entry>
+  <entry>
     <title>闲聊</title>
     <url>/2019/09/08/%E9%97%B2%E8%81%8A/</url>
     <content><![CDATA[<p>点点点</p>
@@ -884,15 +896,6 @@ p_{\mathrm{t}}=\left\{\begin{array}{ll}{p} & {\text { if } y=1} \\ {1-p} & {\tex
     <title>测试用</title>
     <url>/2019/09/07/%E6%94%B9%E5%90%8D%E6%B5%8B%E8%AF%95/</url>
     <content><![CDATA[<p> 发新文测试</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>wei,zaima</title>
-    <url>/2019/08/21/hello-world/</url>
-    <content><![CDATA[<p>buzai, cmn</p>
-<h1 id="还行"><a href="#还行" class="headerlink" title="还行"></a>还行</h1><p>我佛了</p>
-<h1 id="真的吗"><a href="#真的吗" class="headerlink" title="真的吗"></a>真的吗</h1><p>神秘。</p>
-<h1 id="激霸"><a href="#激霸" class="headerlink" title="激霸"></a>激霸</h1><p>看到这的建议请客</p>
 ]]></content>
   </entry>
 </search>
