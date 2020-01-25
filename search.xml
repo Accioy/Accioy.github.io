@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2020年工作记录</title>
+    <url>/2020/01/25/2020%E5%B9%B4%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h2 id="1-13"><a href="#1-13" class="headerlink" title="1.13"></a>1.13</h2><p>使用numba优化基于python的SAR噪声仿真算法</p><p>重新阅读retinanet源代码</p><p>明天计划：基于pix2pix模型进行简单的实时加噪-去噪训练。</p><a id="more"></a>
+
+
+<h2 id="1-19"><a href="#1-19" class="headerlink" title="1.19"></a>1.19</h2><p>之前实现了python的加噪类模块。发现亮度有问题，和matlab仿真结果不一样，仔细研究了一下matplotlib对于整形和浮点形、单通道多通道的np数组的处理。</p>
+<p>已放寒假，重温c++的内容，为刷面试题做准备。</p>
+<p>准备再简单修改一下博客，不那么花里胡哨。</p>
+<h2 id="1-25"><a href="#1-25" class="headerlink" title="1.25"></a>1.25</h2><p>最近又比较摸，有两个原因，一是22号下午新电脑到货了，二是过年了，今天是大年初一。最近在为换电脑做迁移。主要是各种数据文件，steam游戏，开发环境。</p>
+<p>目前数据文件移的差不多了，steam装了只狼、鬼泣5、伊苏8、血污，新下了naizi战旗，回头康一康(x)。</p>
+<p>开发环境配好了py和tf环境，只是简单地在命令行跑了一下demo，还没用vscode做调试试用。</p>
+<p>配置好了github和coding的key，杭州服务器因为这几天过年关机了，没发试。</p>
+<p>今晚刚做好hexo的迁移，并记录方法。</p>
+<p>明天的任务：配好vscode的py和c++调试，继续开始学习。</p>
+]]></content>
+      <categories>
+        <category>Diary or tech</category>
+      </categories>
+  </entry>
+  <entry>
     <title>matplotlib之numpy数组转图片</title>
     <url>/2020/01/19/matplotlib%E4%B9%8Bnumpy%E6%95%B0%E7%BB%84%E8%BD%AC%E5%9B%BE%E7%89%87/</url>
     <content><![CDATA[<p>最近用matplotlib遇到了一些坑，记录一下。</p><h1 id="图片转数组"><a href="#图片转数组" class="headerlink" title="图片转数组"></a>图片转数组</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">im_file=<span class="string">'test_image.jpg'</span></span><br><span class="line">img=plt.imread(im_file)</span><br><span class="line">print(img.shape)</span><br><span class="line">print(img.dtype)</span><br><span class="line"><span class="comment"># img: numpy array with shape （H，W，c）</span></span><br><span class="line"><span class="comment"># uint8</span></span><br></pre></td></tr></table></figure><a id="more"></a>
@@ -546,14 +566,72 @@ P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，�
   <entry>
     <title>乱七八糟的坑以及没什么卯月的知识</title>
     <url>/2019/09/22/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E5%9D%91%E4%BB%A5%E5%8F%8A%E6%B2%A1%E4%BB%80%E4%B9%88%E5%8D%AF%E6%9C%88%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h1 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h1><p>要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。</p><a id="more"></a>
+    <content><![CDATA[<h1 id="tenorflow环境要求"><a href="#tenorflow环境要求" class="headerlink" title="tenorflow环境要求"></a>tenorflow环境要求</h1><p>除了对应版本的cuda和cudnn之外，还需要Microsoft Visual C++ Redistributable，安装包大概15M左右，2015到2019版是共享的。</p><a id="more"></a>
+<h1 id="git相关"><a href="#git相关" class="headerlink" title="git相关"></a>git相关</h1><h2 id="git-windows下支持中文显示"><a href="#git-windows下支持中文显示" class="headerlink" title="git windows下支持中文显示"></a>git windows下支持中文显示</h2><p>git bash右键options-&gt;text，设置编码为utf-8。</p>
+<p>添加环境变量 LESSCHARSET=utf-8 。(git log需要)</p>
+<p>设置命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global core.quotepath <span class="literal">false</span>          <span class="comment"># 显示 status 编码</span></span><br><span class="line">git config --global gui.encoding utf-8            <span class="comment"># 图形界面编码</span></span><br><span class="line">git config --global i18n.commit.encoding utf-8    <span class="comment"># 提交说明编码</span></span><br><span class="line">git config --global i18n.logoutputencoding utf-8  <span class="comment"># 输出 log 编码</span></span><br></pre></td></tr></table></figure>
+<h2 id="linux下github配置"><a href="#linux下github配置" class="headerlink" title="linux下github配置"></a>linux下github配置</h2><p>首先设置git用户和邮箱，</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global user.name 用户名</span><br><span class="line">git config --global user.email 邮箱地址</span><br></pre></td></tr></table></figure>
+<p>生成ssh key对，生成时指定邮箱，需要与上述邮箱一致，</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"你的邮箱"</span> -f ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>上传公钥到github个人设置下。</p>
+<p>本地git添加key文件，</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa_for_git</span><br></pre></td></tr></table></figure>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>更新同步远程和本地分支状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote update --prune</span><br></pre></td></tr></table></figure>
+<h1 id="python多线程与多进程"><a href="#python多线程与多进程" class="headerlink" title="python多线程与多进程"></a>python多线程与多进程</h1><p>多线程要返回值需要自己重写多线程的类添加返回值方法。</p>
+<p>用多进程写了那个传说中的sleep排序算法，发现结果不太准，排序有误差，不知道是多进程的问题还是time.sleep的问题。</p>
+<p>另外，用vscode远程调试多进程的时候会报错，需要添加一句 <code>multiprocessing.set_start_method(&#39;spawn&#39;,True)</code>，原理不明。</p>
+<h1 id="opencv-python问题"><a href="#opencv-python问题" class="headerlink" title="opencv-python问题"></a>opencv-python问题</h1><p>在docker ubuntu里遇到的，import cv2会提示缺库。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-get install libsm6</span><br><span class="line">apt-get install libxrender1</span><br><span class="line">apt-get install libxext-dev</span><br></pre></td></tr></table></figure>
+<h1 id="pip换源"><a href="#pip换源" class="headerlink" title="pip换源"></a>pip换源</h1><p>pip install后指定-i，豆瓣源： <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a></p>
+<p>永久换源：</p>
+<p>linux下，建立~/.pip/pip.conf文件，里面写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+<p>windows下，在C:/user/username/pip/，新建pip.ini，内容同上。</p>
+<h1 id="py编码问题"><a href="#py编码问题" class="headerlink" title="py编码问题"></a>py编码问题</h1><p>文件头：</p>
+<p><code># -*- coding: utf-8 -*-</code></p>
+<p>sys.getfilesystemencoding()</p>
+<p>sys.getdefaultencoding()</p>
+<p>sys.stdin.encoding</p>
+<p>sys.stdout.encoding</p>
+<p>sys.stderr.encoding</p>
+<h1 id="numpy的round"><a href="#numpy的round" class="headerlink" title="numpy的round"></a>numpy的round</h1><p>四舍六入五成双</p>
+<h1 id="matlab导出矢量图文件（手动"><a href="#matlab导出矢量图文件（手动" class="headerlink" title="matlab导出矢量图文件（手动"></a>matlab导出矢量图文件（手动</h1><p>在图窗选择文件-另存为，选择svg格式。可以用浏览器打开，也可以正常插入md。</p>
+<h1 id="word插入图片的问题"><a href="#word插入图片的问题" class="headerlink" title="word插入图片的问题"></a>word插入图片的问题</h1><p>一般来说是设置上下型环绕，随文字移动，不允许重叠。但这个时候经常遇到让人想砸键盘的问题是这玩意死活就是固定位置不随文字动。一般剪切后再粘贴，粘贴选项选择纯图片，重新设格式可解决。应该是word的bug，2016和2019版都遇到过。Visio之类的带格式的东西的话自求多福吧。</p>
+<h1 id="cudnn"><a href="#cudnn" class="headerlink" title="cudnn"></a>cudnn</h1><p>runtime和dev两个都安</p>
+<h1 id="lsb-release"><a href="#lsb-release" class="headerlink" title="lsb_release"></a>lsb_release</h1><p>的包名是lsb-release而不是什么redhat</p>
+<p>然后还需要<code>apt-get install lsb-core</code></p>
+<h1 id="nvcc找不到"><a href="#nvcc找不到" class="headerlink" title="nvcc找不到"></a>nvcc找不到</h1><p>打开~/.bashrc ，添加环境变量export PATH=$PATH:/usr/local/cuda/bin</p>
+<p>执行<code>source .bashrc</code></p>
+<h1 id="关于图像通道数"><a href="#关于图像通道数" class="headerlink" title="关于图像通道数"></a>关于图像通道数</h1><p>看起来是grayscale的图像不一定就是单通道</p>
+<h1 id="Anaconda环境命令"><a href="#Anaconda环境命令" class="headerlink" title="Anaconda环境命令"></a>Anaconda环境命令</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">conda create -n env_name python=3.x</span><br><span class="line"></span><br><span class="line">conda create -n new_env_name --<span class="built_in">clone</span> env_name <span class="comment">#复制环境</span></span><br><span class="line"></span><br><span class="line">conda env list</span><br><span class="line"></span><br><span class="line">conda activate env_name</span><br><span class="line"></span><br><span class="line">conda env remove -n env_name</span><br><span class="line"></span><br><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -it -d -p :22 -v /host/path:/Virtual_host/path   --name=<span class="string">"container_name"</span> image_name /bin/bash</span><br></pre></td></tr></table></figure>
+<p>后台运行一个镜像容器并映射任意主机端口到容器22端口，并挂载主机某目录。</p>
+<p>注意，看到有资料说，应该指定—user username ，指定user后，避免容器内不再是root，在挂载目录中创建的文件在主机中也不再是root。</p>
+<p>（注意：容器停止后，重启启动，分配的端口会变。）</p>
+<p>然后docker ps查看容器id和映射端口。</p>
+<p>进入容器：<code>docker attach container_id</code>。</p>
+<p>用ssh登录前先进容器<code>service ssh start</code>。</p>
+<h2 id="nv-docker"><a href="#nv-docker" class="headerlink" title="nv docker"></a>nv docker</h2><p>要运行需要调用pgu的镜像容器，需要加—runtime=nvidia，或者nvidia-docker run。</p>
 <p><del>依赖：查了nv-docker的github issue，感觉貌似是容器包含cuda，依赖主机的显卡驱动。</del></p>
 <p>没错就是这样，<a href="https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements" target="_blank" rel="noopener">https://github.com/NVIDIA/nvidia-docker/wiki/CUDA#requirements</a></p>
 <p>根据这个wiki说明，cuda的镜像启动需要依赖显卡驱动，并且根据镜像内的cuda版本对显卡驱动版本有要求，具体版本对应要求见上述链接。</p>
-<p>因此容器的cuda对主机的显卡驱动有要求，如果不兼容，要么改主机的显卡驱动版本（没有root不能，而且也没查到非root装显卡驱动的方法，要么就尝试更换与当前主机显卡驱动版本兼容的cuda镜像。</p>
+<p><del>因此容器的cuda对主机的显卡驱动有要求，如果不兼容，要么改主机的显卡驱动版本（没有root不能，而且也没查到非root装显卡驱动的方法，要么就尝试更换与当前主机显卡驱动版本兼容的cuda镜像。</del></p>
 <p><del>但目前我用dnndk这种冷门的东西，我又不想自己建一个镜像把xilinx的那些东西自己装一遍，因此尝试更改镜像内cuda版本看看。</del></p>
-<p>上述尝试失败，和狗管理沟通准备升级显卡驱动，考虑到cuda可以同时装多个版本，并且新版显卡驱动对旧版cuda兼容（如果nv的那个对照表没写错的话），但愿以前的环境不要出现兼容问题。</p>
-<h1 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h1><h2 id="关于root密码"><a href="#关于root密码" class="headerlink" title="关于root密码"></a>关于root密码</h2><p>是随机的，输入passwd更改，对于ssh，root默认不能远程登录，需要修改配置文件（见ssh章节</p>
+<p><del>上述尝试失败，和狗管理沟通准备升级显卡驱动，考虑到cuda可以同时装多个版本，并且新版显卡驱动对旧版cuda兼容（如果nv的那个对照表没写错的话），但愿以前的环境不要出现兼容问题。</del></p>
+<p>ok事实证明：</p>
+<ul>
+<li>新版显卡驱动向下兼容旧的cuda，新的cuda必须要新的显卡驱动，cuda可以多版本并存，设置环境变量即可</li>
+<li>nvdocker依赖宿主机的显卡驱动，不依赖宿主机的cuda</li>
+</ul>
+<h2 id="docker时区问题"><a href="#docker时区问题" class="headerlink" title="docker时区问题"></a>docker时区问题</h2><h3 id="方法一：对于dockerfile"><a href="#方法一：对于dockerfile" class="headerlink" title="方法一：对于dockerfile"></a>方法一：对于dockerfile</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">RUN <span class="built_in">echo</span> <span class="string">"Asia/Shanghai"</span> &gt; /etc/timezone</span><br><span class="line">RUN dpkg-reconfigure -f noninteractive tzdata</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：同步主机时区"><a href="#方法二：同步主机时区" class="headerlink" title="方法二：同步主机时区"></a>方法二：同步主机时区</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker run -v /etc/localtime:/etc/localtime &lt;IMAGE:TAG&gt;</span><br></pre></td></tr></table></figure>
+<p>好处是不会修改镜像本身</p>
+<h3 id="方法三：运行中的容器"><a href="#方法三：运行中的容器" class="headerlink" title="方法三：运行中的容器"></a>方法三：运行中的容器</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"Asia/Shanghai"</span> &gt; /etc/timezone</span><br><span class="line">dpkg-reconfigure -f noninteractive tzdata</span><br></pre></td></tr></table></figure>
+<p>适用于不想新建镜像或重启容器</p>
+<h1 id="虚拟主机ubuntu"><a href="#虚拟主机ubuntu" class="headerlink" title="虚拟主机ubuntu"></a>虚拟主机ubuntu</h1><h2 id="关于root密码"><a href="#关于root密码" class="headerlink" title="关于root密码"></a>关于root密码</h2><p>是随机的，输入passwd更改，对于ssh，root默认不能远程登录，需要修改配置文件（见ssh章节</p>
 <h2 id="关于包"><a href="#关于包" class="headerlink" title="关于包"></a>关于包</h2><p>首先apt-get update更新源，之后才能安装新东西</p>
 <p>然后apt-get upgrade更新所有包</p>
 <p><strong>包相关命令：</strong></p>
@@ -561,9 +639,8 @@ P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，�
 <p>更新源：<strong>apt-get update</strong>　　　　#同步 /etc/apt/sources.list 源的索引，这样才知道是不是有最新的包</p>
 <p>更新包：<strong>apt-get upgrade</strong>　　　#更新所有已安装的软件（upgrade只是简单的更新包，不管这些依赖，它不添不删。）</p>
 <p>更新包2：apt-get dist-upgrade　#包与包之间存在各种依赖关系。而dist-upgrade可以根据依赖关系的变化添删包。（<strong>依赖有时会出错，建议新手谨慎使用</strong>）</p>
-<p>补充：在执行 <strong>upgrade</strong> or <strong>dist-upgrade</strong> 之前一定要执行 <strong>update</strong>, 这样才能获取最新</p>
 <p>安装软件：apt-get install XXX [—reinstall]　#<strong>—reinstall</strong> 是重新安装包，一般都是用 <strong>apt-get install XXX</strong></p>
-<p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖（安装搜狗拼音实例有用到）</p>
+<p>修复依赖：apt-get <strong>-f</strong> install　　　　　　　#修复依赖，类似于win里面的缺少dll，-f之后他帮你修复安装一些依赖</p>
 <p>删除软件：apt-get remove XXX [—purge]　#—purge 卸载的时候把配置文件也删了，完全删除包可以用这个选项：<strong>apt-get remove XXX —purge</strong></p>
 <p>-————————————————————————————————————————————————————————————————————————————</p>
 <p>其他命令：(特殊环境下使用)</p>
@@ -577,41 +654,63 @@ P=\frac{T P}{T P+F P}</script><p>分子为正样本被预测为正的个数，�
 <h1 id="linux命令"><a href="#linux命令" class="headerlink" title="linux命令"></a>linux命令</h1><p>df -h查看硬盘情况</p>
 <p>du 目录查看目录大小，-m以MB为单位</p>
 <p>nvidia-smi 查看gpu使用情况</p>
-<p>tar -zxvf java.tar.gz  -C /usr/java 解压到目标路径</p>
+<p>tar -zxvf xxx.tar.gz  -C /usr/java 解压到目标路径，参数：</p>
+<ul>
+<li>c：打包</li>
+<li>t：查看包中文件名</li>
+<li>x：解压</li>
+<li>j：.bz2格式</li>
+<li>z：.gz格式</li>
+<li>v：显示处理文件</li>
+<li>f：指定文件</li>
+<li>C：指定目录</li>
+</ul>
+<p>(顺便说一句，tar是打包没有压缩，gz只能针对单文件压缩，所以才搞了个这玩意)</p>
 <p>jobs查看后台列表，但只能查看当前终端的</p>
 <p>bg，fg前后切换</p>
-<p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里</p>
-<p>命令后加 &amp;后台运行</p>
+<p>nohup远程终端掉了也可以继续执行，信息保存在.out文件里，命令后加 &amp;后台运行</p>
 <p>正在运行时ctrl+z切后台</p>
 <p>ps -ef可查看全部后台，|grep <em>*</em>可以查找</p>
 <p>ctrl+s暂停终端变化，ctrl+q继续（好像是吧</p>
 <p>ls -lR|grep “^-“|wc -l<br>查看某文件夹下文件夹的个数，包括子文件夹里的。</p>
 <p>复制文件夹：cp xxx /www/wwwroot -r</p>
 <p>rsync同步文件，一般-avP即可</p>
+<p>rsync通过ssh从一台服务器推送文件到另一台服务器：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rsync -avz --progress -e <span class="string">'ssh -p 目标服务器端口号'</span> thefile user@ip:/path/</span><br></pre></td></tr></table></figure>
+<p>浏览器等界面：在连接X11情况下（Mobaxterm自动连接）命令行输入firefox自动弹出</p>
 <h1 id="ssh服务端"><a href="#ssh服务端" class="headerlink" title="ssh服务端"></a>ssh服务端</h1><p>apt-get install openssh-server</p>
 <p>启动：/etc/init.d/ssh start</p>
 <p>ps -e|grep ssh</p>
 <p>默认root不能远程登录，需要修改配置文件</p>
 <p>vim /etc/ssh/sshd_config</p>
-<p>vim搜索：/<em>*</em></p>
 <p>修改PermitRootLogin项，默认为without-password，修改为yes</p>
+<p>配置ssh key登录：</p>
+<p>本地生成私钥-公钥对（需要安装git，或者一些ssh客户端也支持ssh key生成）。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b <span class="number">4096</span></span><br></pre></td></tr></table></figure>
+<p>上述命令会在本地生成一个私钥文件和一个公钥文件。</p>
+<p>在服务器用户文件夹下创建文件夹<code>~/.ssh/</code>，把公钥(id_rsa.pub)上传至该文件夹。然后将公钥内容存入该文件中：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+<p>最后修改文件夹权限：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">chmod -R 700 .ssh</span><br></pre></td></tr></table></figure>
 <h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>i插入，esc命令模式，:到尾部输入命令，w保存，q退出，!强制</p>
+<p>搜索：/<em>*</em></p>
 <p>保存退出 ：:wq!</p>
 <p>不保存退出：:q!</p>
 <h1 id="mathtype公式显示不全"><a href="#mathtype公式显示不全" class="headerlink" title="mathtype公式显示不全"></a>mathtype公式显示不全</h1><p>调整word行距，不要设固定值，最好改成xx倍</p>
 <h1 id="有关random-shuffle函数的局限性"><a href="#有关random-shuffle函数的局限性" class="headerlink" title="有关random.shuffle函数的局限性"></a>有关random.shuffle函数的局限性</h1><p>刚刚踩的坑，记录一下，万一对别人有帮助呢。</p>
-<p>本文重点： random.shuffle千万不要用于二维numpy.array（也就是矩阵）!!!</p>
+<p>random.shuffle千万不要用于二维numpy.array（也就是矩阵）!!!</p>
+<p>最好使用np包自带的random。</p>
 <p><a href="https://blog.csdn.net/qq_21063873/article/details/80860218" target="_blank" rel="noopener">https://blog.csdn.net/qq_21063873/article/details/80860218</a></p>
 <h1 id="关于卡刷img"><a href="#关于卡刷img" class="headerlink" title="关于卡刷img"></a>关于卡刷img</h1><p>用balenaEtcher往SD卡里刷img的时候，空间越刷越小，格式化不能恢复，我qtmd，百度了一下解决方法：</p>
 <p><a href="https://blog.csdn.net/tz2101/article/details/55000309" target="_blank" rel="noopener">https://blog.csdn.net/tz2101/article/details/55000309</a></p>
 <p>有时候U盘做完系统盘安装后，发现U盘大小大幅度缩水，怎么恢复原大小。<br>步骤如下：<br>插入U盘；</p>
 <p>打开“运行”，输入cmd命令，然后输入diskpart，进入diskpart管理；<br>输入list disk，查看目前电脑的硬盘，然后输入select disk 3（原作者说一般是1反正我这里是3）（注意空格，名字是英文，list里显示的是中文还行）；<br>此时已选中U盘了，输入clean，清除U盘上的数据；<br>输入create partition primary ，即创建主分区，active 激活该分区，format quick搜索 快速格式化该分区。</p>
 <p>exit退出diskpart管理，exit退出cmd。此时你发现你的U盘恢复了原始大小。</p>
-<h2 id="linux命令行搭建shadowsocks代理"><a href="#linux命令行搭建shadowsocks代理" class="headerlink" title="linux命令行搭建shadowsocks代理"></a>linux命令行搭建shadowsocks代理</h2><p>问题在于弄好socks代理还要搞个https转socks，如果有gui的话弄好shadowsocks浏览器有插件可以解决。</p>
+<h1 id="linux命令行搭建shadowsocks代理"><a href="#linux命令行搭建shadowsocks代理" class="headerlink" title="linux命令行搭建shadowsocks代理"></a>linux命令行搭建shadowsocks代理</h1><p>问题在于弄好socks代理还要搞个https转socks，如果有gui的话弄好shadowsocks浏览器有插件可以解决。</p>
 <p>命令行情况下，<code>pip install shadowsocks</code>，然后sslocal命令。</p>
 <p>linux的shadowsocks服务端和客户端是一个包，服务端命令是ssserver。</p>
 <p>问题在于https转socks实现，需要第三方软件实现。</p>
-<h2 id="关于主机ping开发板等设备"><a href="#关于主机ping开发板等设备" class="headerlink" title="关于主机ping开发板等设备"></a>关于主机ping开发板等设备</h2><p>直连网线的话主机设静态ip并和开发板ip在同一区段内</p>
+<h1 id="关于主机ping开发板等设备"><a href="#关于主机ping开发板等设备" class="headerlink" title="关于主机ping开发板等设备"></a>关于主机ping开发板等设备</h1><p>直连网线的话主机设静态ip并和开发板ip在同一区段内</p>
 ]]></content>
       <categories>
         <category>tech</category>
@@ -872,18 +971,6 @@ p_{\mathrm{t}}=\left\{\begin{array}{ll}{p} & {\text { if } y=1} \\ {1-p} & {\tex
       </categories>
   </entry>
   <entry>
-    <title>wei,zaima</title>
-    <url>/2019/09/08/hello-world/</url>
-    <content><![CDATA[<p>buzai, cmn</p>
-<h1 id="还行"><a href="#还行" class="headerlink" title="还行"></a>还行</h1><p>我佛了</p>
-<h1 id="真的吗"><a href="#真的吗" class="headerlink" title="真的吗"></a>真的吗</h1><p>神秘。</p>
-<h1 id="激霸"><a href="#激霸" class="headerlink" title="激霸"></a>激霸</h1><p>看到这的建议请客</p>
-]]></content>
-      <categories>
-        <category>Diary</category>
-      </categories>
-  </entry>
-  <entry>
     <title>闲聊</title>
     <url>/2019/09/08/%E9%97%B2%E8%81%8A/</url>
     <content><![CDATA[<p>点点点</p>
@@ -897,5 +984,17 @@ p_{\mathrm{t}}=\left\{\begin{array}{ll}{p} & {\text { if } y=1} \\ {1-p} & {\tex
     <url>/2019/09/07/%E6%94%B9%E5%90%8D%E6%B5%8B%E8%AF%95/</url>
     <content><![CDATA[<p> 发新文测试</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>wei,zaima</title>
+    <url>/2019/08/21/hello-world/</url>
+    <content><![CDATA[<p>buzai, cmn</p>
+<h1 id="还行"><a href="#还行" class="headerlink" title="还行"></a>还行</h1><p>我佛了</p>
+<h1 id="真的吗"><a href="#真的吗" class="headerlink" title="真的吗"></a>真的吗</h1><p>神秘。</p>
+<h1 id="激霸"><a href="#激霸" class="headerlink" title="激霸"></a>激霸</h1><p>看到这的建议请客</p>
+]]></content>
+      <categories>
+        <category>Diary</category>
+      </categories>
   </entry>
 </search>
